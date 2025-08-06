@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Explore Genuine Stage's events gallery - photos and videos from our workshops, therapy sessions, and community celebrations in Ethiopia."/>
+  <title>Events & Gallery | Genuine Stage</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon"/>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans&display=swap" rel="stylesheet"/>
+
+  <!-- Custom CSS -->
+  <style>
+    :root {
+      --primary: #66197F;
+      --primary-light: #8a4b9e;
+      --light: #f9f7fc;
+      --dark: #1e0a3c;
+      --gray: #555;
+      --light-gray: #f0f0f0;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      line-height: 1.7;
+      color: #333;
+      background-color: var(--light);
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: 'Poppins', sans-serif;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--white);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Reused Navbar Styles */
+    .navbar {
+      background-color: var(--primary);
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+    }
+    
+    .nav-icons {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+    
+    .nav-icons a {
+      color: var(--white);
+      font-size: 1.2rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      background: rgba(255,255,255,0.2);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .nav-icons a:hover {
+      color: var(--primary);
+      background: var(--white);
+      transform: translateY(-3px);
+    }
+    
+    .logo-container {
+      width: 160px;
+      height: auto;
+      transition: all 0.3s ease;
+    }
+    
+    .logo {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      display: block;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .logo:hover {
+      transform: scale(1.05);
+    }
+    
+    .logo-name {
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: bold;
+      margin-top: 5px;
+      text-align: center;
+    }
+    
+    .menu-toggle {
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 10px;
+      z-index: 1001;
+    }
+    
+    .menu-toggle span {
+      width: 30px;
+      height: 3px;
+      background-color: var(--white);
+      transition: all 0.3s ease;
+    }
+    
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+    
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+    
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -300px;
+      width: 300px;
+      height: 100%;
+      background-color: var(--primary);
+      padding-top: 80px;
+      transition: left 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      z-index: 1000;
+      overflow-y: auto;
+      box-shadow: 5px 0 15px rgba(0,0,0,0.2);
+    }
+    
+    .side-menu.active {
+      left: 0;
+    }
+    
+    .side-menu ul {
+      list-style: none;
+      padding: 0 20px;
+    }
+    
+    .side-menu li a {
+      display: block;
+      padding: 15px 20px;
+      text-decoration: none;
+      color: var(--white);
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border-radius: 8px;
+      margin-bottom: 5px;
+    }
+    
+    .side-menu li a:hover {
+      background-color: var(--white);
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+    
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      backdrop-filter: blur(5px);
+      display: none;
+      z-index: 999;
+      transition: all 0.3s ease;
+    }
+    
+    .overlay.active {
+      display: block;
+    }
+
+    .lang-switch {
+      margin-left: 20px;
+    }
+
+    .lang-switch select {
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 8px 12px;
+      border-radius: 5px;
+      background: var(--primary-light);
+      font-size: 14px;
+      color: var(--white);
+    }
+
+    .lang-switch select option {
+      background: var(--white);
+      color: var(--dark);
+    }
+
+    /* Gallery Specific Styles */
+    .gallery-hero {
+      background: linear-gradient(rgba(102, 25, 127, 0.8), rgba(102, 25, 127, 0.8)), url('images/events-hero.jpg') no-repeat center center;
+      background-size: cover;
+      color: white;
+      text-align: center;
+      padding: 140px 20px 80px;
+      margin-top: 80px;
+    }
+
+    .gallery-hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    .gallery-hero p {
+      font-size: 1.3rem;
+      max-width: 800px;
+      margin: 0 auto 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: var(--white);
+      color: var(--primary);
+      padding: 14px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      background-color: var(--light);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--white);
+      color: var(--white);
+    }
+
+    .btn-outline:hover {
+      background: var(--white);
+      color: var(--primary);
+    }
+
+    /* Gallery Controls */
+    .gallery-controls {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin: 40px 0;
+    }
+
+    .filter-btn {
+      background: var(--light);
+      border: 2px solid var(--primary-light);
+      color: var(--primary);
+      padding: 10px 25px;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* Gallery Grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
+      padding: 20px 0;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+      height: 280px;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 15px 30px rgba(102, 25, 127, 0.2);
+    }
+
+    .gallery-media {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(102, 25, 127, 0.9), transparent);
+      color: white;
+      padding: 20px;
+      transform: translateY(100%);
+      transition: transform 0.3s;
+    }
+
+    .gallery-item:hover .gallery-caption {
+      transform: translateY(0);
+    }
+
+    .video-icon {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: rgba(255,255,255,0.9);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+    }
+
+    /* Event Highlights */
+    .event-highlights {
+      padding: 80px 0;
+      background: white;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 50px;
+      color: var(--primary);
+    }
+
+    .event-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+    }
+
+    .event-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: transform 0.3s;
+    }
+
+    .event-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .event-image {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .event-details {
+      padding: 25px;
+    }
+
+    .event-date {
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 60px 0 30px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-column h3 {
+      color: white;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--primary);
+    }
+
+    .footer-column ul {
+      list-style: none;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-column a {
+      color: #ccc;
+      transition: color 0.3s;
+    }
+
+    .footer-column a:hover {
+      color: white;
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 1.3rem;
+      margin-right: 15px;
+      transition: color 0.3s;
+    }
+
+    .social-links a:hover {
+      color: var(--primary);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .gallery-hero {
+        margin-top: 60px;
+        padding: 100px 20px 60px;
+      }
+      .gallery-hero h1 {
+        font-size: 2.2rem;
+      }
+      .gallery-hero p {
+        font-size: 1.1rem;
+      }
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      }
+      .event-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-hero {
+        padding: 80px 15px 50px;
+      }
+      .gallery-hero h1 {
+        font-size: 1.8rem;
+      }
+      .filter-btn {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+      }
+      .btn {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <!-- Left: Social Icons -->
+    <div class="nav-icons">
+      <a href="#contact" title="Contact Us"><i class="fas fa-envelope"></i></a>
+      <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+    </div>
+
+    <!-- Center: Logo -->
+    <div class="logo-container">
+      <img src="../images/Logo.png" alt="Genuine Stage Logo" class="logo"/>
+      <div class="logo-name">Genuine Stage</div>
+    </div>
+
+    <!-- Right: Language Switcher & Hamburger Menu -->
+    <div style="display: flex; align-items: center;">
+      <div class="lang-switch">
+        <select onchange="changeLang(this.value)">
+          <option value="en">English</option>
+          <option value="am">????</option>
+          <option value="om">Afaan Oromoo</option>
+          <option value="ti">????</option>
+          <option value="ar">???????</option>
+        </select>
+      </div>
+      <div class="menu-toggle" id="menu-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Side Menu (Hamburger Menu) -->
+  <div class="side-menu" id="sideMenu">
+    <ul>
+      <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+      <li><a href="programs.html"><i class="fas fa-graduation-cap"></i> Programs</a></li>
+      <li><a href="resources.html"><i class="fas fa-book"></i> Resources</a></li>
+      <li><a href="testimonials.html"><i class="fas fa-quote-left"></i> Testimonials</a></li>
+      <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+      <li><a href="events.html"><i class="fas fa-calendar-alt"></i> Events</a></li>
+      <li><a href="community-forum.html"><i class="fas fa-comments"></i> Community Forum</a></li>
+      <li><a href="faqs.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
+    </ul>
+  </div>
+
+  <!-- Overlay to close menu when clicked outside -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Gallery Hero Section -->
+  <section class="gallery-hero">
+    <div class="container">
+      <h1>Our Events & Celebrations</h1>
+      <p>Relive the transformative moments from our workshops, therapy sessions, and community gatherings across Ethiopia</p>
+      <a href="#gallery" class="btn">View Gallery</a>
+      <a href="#events" class="btn btn-outline">Upcoming Events</a>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="container" id="gallery" style="padding: 60px 20px;">
+    <h2 class="section-title">Event Gallery</h2>
+    <p class="text-center" style="max-width: 700px; margin: 0 auto 40px;">Browse through photos and videos from our past events and celebrations</p>
+
+    <div class="gallery-controls">
+      <button class="filter-btn active" data-filter="all">All Events</button>
+      <button class="filter-btn" data-filter="workshops">Workshops</button>
+      <button class="filter-btn" data-filter="therapy">Therapy Sessions</button>
+      <button class="filter-btn" data-filter="community">Community Events</button>
+      <button class="filter-btn" data-filter="videos">Videos</button>
+    </div>
+
+    <div class="gallery-grid">
+      <!-- Workshop Item 1 -->
+      <div class="gallery-item workshops">
+        <img src="../images/workshop-1.jpg" alt="Mindfulness Workshop" class="gallery-media">
+        <div class="gallery-caption">
+          <h3>Mindfulness Workshop</h3>
+          <p>Addis Ababa  Jan 2025</p>
+        </div>
+      </div>
+
+      <!-- Therapy Item 1 -->
+      <div class="gallery-item therapy">
+        <img src="../images/therapy-group.jpg" alt="Group Therapy Session" class="gallery-media">
+        <div class="gallery-caption">
+          <h3>Group Therapy Session</h3>
+          <p>Dire Dawa  Mar 2025</p>
+        </div>
+      </div>
+
+      <!-- Video Item 1 -->
+      <div class="gallery-item videos">
+        <video class="gallery-media" poster="images/events/video-thumb-1.jpg">
+          <source src="videos/workshop-highlight.mp4" type="video/mp4">
+        </video>
+        <div class="video-icon">
+          <i class="fas fa-play"></i>
+        </div>
+        <div class="gallery-caption">
+          <h3>Annual Summit Highlights</h3>
+          <p>2:45 min</p>
+        </div>
+      </div>
+
+      <!-- Community Item 1 -->
+      <div class="gallery-item community">
+        <img src="../images/community-1.jpg" alt="Community Picnic" class="gallery-media">
+        <div class="gallery-caption">
+          <h3>Community Picnic</h3>
+          <p>Hawassa  May 2025</p>
+        </div>
+      </div>
+
+      <!-- Workshop Item 2 -->
+      <div class="gallery-item workshops">
+        <img src="../images/workshop-2.jpg" alt="Communication Skills Workshop" class="gallery-media">
+        <div class="gallery-caption">
+          <h3>Communication Workshop</h3>
+          <p>Bahir Dar  Feb 2025</p>
+        </div>
+      </div>
+
+      <!-- Therapy Item 2 -->
+      <div class="gallery-item therapy">
+        <img src="../images/therapy-individual.jpg" alt="Individual Therapy" class="gallery-media">
+        <div class="gallery-caption">
+          <h3>Individual Session</h3>
+          <p>Addis Ababa  Apr 2025</p>
+        </div>
+      </div>
+
+      <!-- Video Item 2 -->
+      <div class="gallery-item videos">
+        <video class="gallery-media" poster="images/events/video-thumb-2.jpg">
+          <source src="../images/community-event.mp4" type="video/mp4">
+        </video>
+        <div class="video-icon">
+          <i class="fas fa-play"></i>
+        </div>
+        <div class="gallery-caption">
+          <h3>Community Day</h3>
+          <p>1:30 min</p>
+        </div>
+      </div>
+
+      <!-- Community Item 2 -->
+      <div class="gallery-item community">
+        <img src="../images/community-2.jpg" alt="Youth Event" class="gallery-media">
+        <div class="gallery-caption">
+          <h3>Youth Empowerment Day</h3>
+          <p>Mekele  Jun 2025</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Event Highlights Section -->
+  <section class="event-highlights" id="events">
+    <div class="container">
+      <h2 class="section-title">Upcoming Events</h2>
+      <p class="text-center" style="max-width: 700px; margin: 0 auto 50px;">Join us for these transformative experiences</p>
+
+      <div class="event-grid">
+        <!-- Event 1 -->
+        <div class="event-card">
+          <img src="../images/upcoming-1.jpg" alt="Mental Health Summit" class="event-image">
+          <div class="event-details">
+            <div class="event-date">June 15-17, 2025</div>
+            <h3>Annual Mental Health Summit</h3>
+            <p>Join 500+ participants for Ethiopia's largest mental wellness gathering featuring international speakers and transformative workshops.</p>
+            <a href="#" class="btn">Register Now</a>
+          </div>
+        </div>
+
+        <!-- Event 2 -->
+        <div class="event-card">
+          <img src="../images/upcoming-2.jpg" alt="Youth Workshop" class="event-image">
+          <div class="event-details">
+            <div class="event-date">July 5, 2025</div>
+            <h3>Youth Empowerment Workshop</h3>
+            <p>Special program for teens aged 13-18 focusing on self-esteem, digital wellness, and healthy relationships.</p>
+            <a href="#" class="btn">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Event 3 -->
+        <div class="event-card">
+          <img src="../images/upcoming-3.jpg" alt="Couples Retreat" class="event-image">
+          <div class="event-details">
+            <div class="event-date">August 10-12, 2025</div>
+            <h3>Couples Wellness Retreat</h3>
+            <p>Weekend retreat focusing on communication, intimacy, and building stronger relationships in beautiful nature settings.</p>
+            <a href="#" class="btn">View Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>About Genuine Stage</h3>
+          <p>Empowering individuals and communities through compassionate mental health support and personal development.</p>
+        </div>
+        <div class="footer-column">
+          <h3>Services</h3>
+          <ul>
+            <li><a href="individual-therapy.html">Individual Therapy</a></li>
+            <li><a href="group-programs.html">Group Programs</a></li>
+            <li><a href="workshops.html">Workshops</a></li>
+            <li><a href="online-sessions.html">Online Sessions</a></li>
+            <li><a href="crisis-support.html">Crisis Support</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="self-help-tools.html">Self-Help Tools</a></li>
+            <li><a href="mental-health-tips.html">Mental Health Tips</a></li>
+            <li><a href="community-forum.html">Community Forum</a></li>
+            <li><a href="faqs.html">FAQs</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Newsletter</h3>
+          <p>Stay updated with mental health tips and program announcements.</p>
+          <form>
+            <input type="email" placeholder="Your email" required>
+            <button type="submit" class="btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-telegram"></i></a>
+      </div>
+      <div class="copyright">
+        © 2025 Genuine Stage. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- JavaScript -->
+  <script>
+    // Navbar Toggle
+    const menuIcon = document.getElementById('menu-icon');
+    const sideMenu = document.getElementById('sideMenu');
+    const overlay = document.getElementById('overlay');
+
+    menuIcon.addEventListener('click', () => {
+      menuIcon.classList.toggle('active');
+      sideMenu.classList.toggle('active');
+      overlay.classList.toggle('active');
+    });
+
+    overlay.addEventListener('click', () => {
+      menuIcon.classList.remove('active');
+      sideMenu.classList.remove('active');
+      overlay.classList.remove('active');
+    });
+
+    // Gallery Filter Functionality
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active button
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        // Filter items
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.gallery-item').forEach(item => {
+          if (filter === 'all' || item.classList.contains(filter)) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Video Play on Click
+    document.querySelectorAll('.gallery-item.videos').forEach(videoItem => {
+      videoItem.addEventListener('click', (e) => {
+        const video = videoItem.querySelector('video');
+        if (video.paused) {
+          video.play();
+          video.controls = true;
+          videoItem.querySelector('.video-icon').style.display = 'none';
+        }
+      });
+    });
+
+    // Language Switcher
+    function changeLang(lang) {
+      alert("Language changed to: " + lang + "\nFull translation coming soon!");
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,1077 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Workshops at Genuine Stage - Interactive learning experiences for personal growth and mental wellness in Ethiopia."/>
+  <title>Workshops | Genuine Stage - Interactive Learning Experiences</title>
+
+  <!-- Favicon (optional) -->
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon"/>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans&display=swap" rel="stylesheet"/>
+
+  <!-- Custom CSS -->
+  <style>
+    :root {
+      --primary: #66197F;
+      --primary-light: #8a4b9e;
+      --light: #f9f7fc;
+      --dark: #1e0a3c;
+      --gray: #555;
+      --light-gray: #f0f0f0;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      line-height: 1.7;
+      color: #333;
+      background-color: var(--light);
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: 'Poppins', sans-serif;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--white);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Navbar Styles - Purple Version */
+    .navbar {
+      background-color: var(--primary);
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+    }
+    
+    /* Contact & Social Icons Section */
+    .nav-icons {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+    
+    .nav-icons a {
+      color: var(--white);
+      font-size: 1.2rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      background: rgba(255,255,255,0.2);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .nav-icons a:hover {
+      color: var(--primary);
+      background: var(--white);
+      transform: translateY(-3px);
+    }
+    
+    /* Logo Container */
+    .logo-container {
+      width: 160px;
+      height: auto;
+      transition: all 0.3s ease;
+    }
+    
+    .logo {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      display: block;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .logo:hover {
+      transform: scale(1.05);
+    }
+    
+    .logo-name {
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: bold;
+      margin-top: 5px;
+      text-align: center;
+    }
+    
+    /* Hamburger Icon */
+    .menu-toggle {
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 10px;
+      z-index: 1001;
+    }
+    
+    .menu-toggle span {
+      width: 30px;
+      height: 3px;
+      background-color: var(--white);
+      transition: all 0.3s ease;
+    }
+    
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+    
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+    
+    /* Slide-out Menu */
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -300px;
+      width: 300px;
+      height: 100%;
+      background-color: var(--primary);
+      padding-top: 80px;
+      transition: left 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      z-index: 1000;
+      overflow-y: auto;
+      box-shadow: 5px 0 15px rgba(0,0,0,0.2);
+    }
+    
+    .side-menu.active {
+      left: 0;
+    }
+    
+    .side-menu ul {
+      list-style: none;
+      padding: 0 20px;
+    }
+    
+    .side-menu li a {
+      display: block;
+      padding: 15px 20px;
+      text-decoration: none;
+      color: var(--white);
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border-radius: 8px;
+      margin-bottom: 5px;
+    }
+    
+    .side-menu li a:hover {
+      background-color: var(--white);
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+    
+    /* Overlay to close menu when clicked outside */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      backdrop-filter: blur(5px);
+      display: none;
+      z-index: 999;
+      transition: all 0.3s ease;
+    }
+    
+    .overlay.active {
+      display: block;
+    }
+
+    /* Language Switcher */
+    .lang-switch {
+      margin-left: 20px;
+    }
+
+    .lang-switch select {
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 8px 12px;
+      border-radius: 5px;
+      background: var(--primary-light);
+      font-size: 14px;
+      color: var(--white);
+    }
+
+    .lang-switch select option {
+      background: var(--white);
+      color: var(--dark);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(102, 25, 127, 0.8), rgba(102, 25, 127, 0.8)), url('images/workshops-hero.jpg') no-repeat center center;
+      background-size: cover;
+      color: white;
+      text-align: center;
+      padding: 140px 20px 80px;
+      margin-top: 80px;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 800px;
+      margin: 0 auto 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: var(--white);
+      color: var(--primary);
+      padding: 14px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      background-color: var(--light);
+    }
+
+    .btn-secondary {
+      background-color: var(--primary-light);
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--primary);
+    }
+
+    /* Workshops Section */
+    .workshops {
+      padding: 80px 0;
+      background-color: white;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.2rem;
+      margin-bottom: 50px;
+      color: var(--gray);
+    }
+
+    .workshops-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .workshops-text {
+      padding: 20px;
+    }
+
+    .workshops-text h3 {
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+
+    .workshops-text p {
+      margin-bottom: 15px;
+    }
+
+    .workshops-img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    /* Benefits Section */
+    .benefits {
+      padding: 80px 0;
+      background: var(--light);
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .benefit-card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      text-align: center;
+      border: 1px solid rgba(102, 25, 127, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(102, 25, 127, 0.1);
+    }
+
+    .benefit-icon {
+      width: 80px;
+      height: 80px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      color: white;
+      font-size: 1.8rem;
+    }
+
+    /* Current Workshops Section */
+    .current-workshops {
+      padding: 80px 0;
+      background: white;
+    }
+
+    .workshops-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .workshop-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border: 1px solid rgba(102, 25, 127, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .workshop-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(102, 25, 127, 0.1);
+    }
+
+    .workshop-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .workshop-content {
+      padding: 25px;
+    }
+
+    .workshop-content h3 {
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+    }
+
+    .workshop-meta {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 15px;
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .workshop-level {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .level-beginner {
+      background-color: #e3f2fd;
+      color: #1976d2;
+    }
+
+    .level-intermediate {
+      background-color: #e8f5e9;
+      color: #388e3c;
+    }
+
+    .level-advanced {
+      background-color: #fce4ec;
+      color: #c2185b;
+    }
+
+    /* Testimonials Section */
+    .testimonials {
+      padding: 80px 0;
+      background: var(--light);
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .testimonial {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border-left: 5px solid var(--primary);
+    }
+
+    .testimonial p {
+      font-style: italic;
+      margin-bottom: 15px;
+    }
+
+    .client {
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    /* FAQ Section */
+    .faq {
+      padding: 80px 0;
+      background: white;
+    }
+
+    .faq-item {
+      margin-bottom: 20px;
+      background: var(--light);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      border: 1px solid rgba(102, 25, 127, 0.1);
+    }
+
+    .faq-question {
+      padding: 20px;
+      background: var(--primary);
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-answer {
+      padding: 20px;
+      display: none;
+    }
+
+    .faq-answer.active {
+      display: block;
+    }
+
+    /* CTA Section */
+    .cta {
+      padding: 80px 0;
+      background: linear-gradient(135deg, var(--primary) 0%, #8e2de2 100%);
+      color: white;
+      text-align: center;
+    }
+
+    .cta h2 {
+      color: white;
+      margin-bottom: 30px;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 60px 0 30px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-column h3 {
+      color: white;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--primary);
+    }
+
+    .footer-column ul {
+      list-style: none;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-column a {
+      color: #ccc;
+      transition: color 0.3s;
+    }
+
+    .footer-column a:hover {
+      color: white;
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 1.3rem;
+      margin-right: 15px;
+      transition: color 0.3s;
+    }
+
+    .social-links a:hover {
+      color: var(--primary);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero {
+        margin-top: 60px;
+        padding: 100px 20px 60px;
+      }
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      .hero p {
+        font-size: 1.1rem;
+      }
+      .nav-icons {
+        gap: 15px;
+      }
+      .nav-icons a {
+        font-size: 1rem;
+        width: 35px;
+        height: 35px;
+      }
+      .logo {
+        height: 40px;
+      }
+      .lang-switch select {
+        padding: 6px 10px;
+      }
+      .workshops-content {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .navbar {
+        padding: 10px 3%;
+      }
+      .hero {
+        padding: 80px 15px 50px;
+      }
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .btn {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+      }
+      .workshop-meta {
+        flex-direction: column;
+        gap: 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <!-- Left: Social Icons -->
+    <div class="nav-icons">
+      <a href="#contact" title="Contact Us"><i class="fas fa-envelope"></i></a>
+      <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+    </div>
+
+    <!-- Center: Logo -->
+    <div class="logo-container">
+      <img src="../images/Logo.png" alt="Genuine Stage Logo" class="logo"/>
+      <div class="logo-name">Genuine Stage</div>
+    </div>
+
+    <!-- Right: Language Switcher & Hamburger Menu -->
+    <div style="display: flex; align-items: center;">
+      <div class="lang-switch">
+        <select onchange="changeLang(this.value)">
+          <option value="en">English</option>
+          <option value="am">አማርኛ</option>
+          <option value="om">Afaan Oromoo</option>
+          <option value="ti">ትግርኛ</option>
+          <option value="ar">العربية</option>
+        </select>
+      </div>
+      <div class="menu-toggle" id="menu-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Side Menu (Hamburger Menu) -->
+  <div class="side-menu" id="sideMenu">
+    <ul>
+      <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+      <li><a href="programs.html"><i class="fas fa-graduation-cap"></i> Programs</a></li>
+      <li><a href="resources.html"><i class="fas fa-book"></i> Resources</a></li>
+      <li><a href="testimonials.html"><i class="fas fa-quote-left"></i> Testimonials</a></li>
+      <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+      <li><a href="events.html"><i class="fas fa-calendar-alt"></i> Events</a></li>
+      <li><a href="community-forum.html"><i class="fas fa-comments"></i> Community Forum</a></li>
+      <li><a href="faqs.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
+    </ul>
+  </div>
+
+  <!-- Overlay to close menu when clicked outside -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>Workshops</h1>
+      <p>Interactive learning experiences for personal growth and mental wellness</p>
+      <a href="#current-workshops" class="btn">View Upcoming Workshops</a>
+    </div>
+  </section>
+
+  <!-- Workshops Section -->
+  <section class="workshops">
+    <div class="container">
+      <h2 class="section-title">Transformative Learning Experiences</h2>
+      <p class="section-subtitle">Practical skills for personal and professional development</p>
+      
+      <div class="workshops-content">
+        <div class="workshops-text">
+          <h3>What Are Our Workshops?</h3>
+          <p>Our workshops are interactive, skill-building sessions designed to provide practical tools for personal growth, mental wellness, and professional development. Unlike traditional therapy groups, workshops focus on education and skill acquisition in a structured, time-limited format.</p>
+          <p>Each workshop is carefully designed by our team of mental health professionals to address specific needs and challenges. They combine evidence-based psychological principles with practical exercises that you can immediately apply to your daily life.</p>
+          <p>Workshops typically range from one-time intensive sessions (2-4 hours) to multi-week programs meeting weekly (1-2 hours per session). They're perfect for those who want to learn new skills but may not be ready for or need ongoing therapy.</p>
+          <a href="#benefits" class="btn">Learn About Benefits</a>
+        </div>
+        <div>
+          <img src="../images/General Workshops.jpg" alt="Workshop participants engaged in activity" class="workshops-img"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="benefits" id="benefits">
+    <div class="container">
+      <h2 class="section-title">Benefits of Our Workshops</h2>
+      <p class="section-subtitle">Why our workshops make a difference</p>
+      
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <i class="fas fa-lightbulb"></i>
+          </div>
+          <h3>Practical Skills</h3>
+          <p>Learn immediately applicable techniques for managing stress, improving relationships, and enhancing wellbeing.</p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3>Focused Learning</h3>
+          <p>Concentrated sessions on specific topics allow for deeper exploration than traditional therapy formats.</p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3>Community Support</h3>
+          <p>Connect with others who share similar goals and challenges in a structured, supportive environment.</p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <h3>Time-Efficient</h3>
+          <p>Get concentrated support and learning in a shorter timeframe than ongoing therapy requires.</p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <h3>Expert Guidance</h3>
+          <p>All workshops are led by qualified professionals with specialized training in their topic areas.</p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <i class="fas fa-leaf"></i>
+          </div>
+          <h3>Holistic Approach</h3>
+          <p>We address mind, body, and spirit through diverse therapeutic modalities and techniques.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Current Workshops Section -->
+  <section class="current-workshops" id="current-workshops">
+    <div class="container">
+      <h2 class="section-title">Upcoming Workshops</h2>
+      <p class="section-subtitle">Join one of our transformative learning experiences</p>
+      
+      <div class="workshops-grid">
+        <div class="workshop-card">
+          <img src="../images/Mindfulness Workshop.jpg" alt="Mindfulness Workshop" class="workshop-img"/>
+          <div class="workshop-content">
+            <span class="workshop-level level-beginner">Beginner</span>
+            <h3>Mindfulness for Stress Reduction</h3>
+            <div class="workshop-meta">
+              <div class="meta-item">
+                <i class="far fa-calendar-alt"></i>
+                <span>June 15, 2025</span>
+              </div>
+              <div class="meta-item">
+                <i class="far fa-clock"></i>
+                <span>10 AM - 2 PM</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Addis Ababa</span>
+              </div>
+            </div>
+            <p>Learn foundational mindfulness techniques to reduce stress, improve focus, and enhance emotional regulation in this interactive workshop.</p>
+            <button class="btn">Register Now</button>
+            <button class="btn btn-secondary">Learn More</button>
+          </div>
+        </div>
+        
+        <div class="workshop-card">
+          <img src="../images/Communication Workshop.jpg" alt="Communication Workshop" class="workshop-img"/>
+          <div class="workshop-content">
+            <span class="workshop-level level-intermediate">Intermediate</span>
+            <h3>Effective Communication Skills</h3>
+            <div class="workshop-meta">
+              <div class="meta-item">
+                <i class="far fa-calendar-alt"></i>
+                <span>June 22-29, 2025</span>
+              </div>
+              <div class="meta-item">
+                <i class="far fa-clock"></i>
+                <span>Weekly, 6-8 PM</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Online</span>
+              </div>
+            </div>
+            <p>Develop skills for assertive communication, active listening, and conflict resolution in personal and professional relationships.</p>
+            <button class="btn">Register Now</button>
+            <button class="btn btn-secondary">Learn More</button>
+          </div>
+        </div>
+        
+        <div class="workshop-card">
+          <img src="../images/Mindful Parenting Strategies.jpg" alt="Parenting Workshop" class="workshop-img"/>
+          <div class="workshop-content">
+            <span class="workshop-level level-beginner">Beginner</span>
+            <h3>Positive Parenting Strategies</h3>
+            <div class="workshop-meta">
+              <div class="meta-item">
+                <i class="far fa-calendar-alt"></i>
+                <span>July 6, 2025</span>
+              </div>
+              <div class="meta-item">
+                <i class="far fa-clock"></i>
+                <span>9 AM - 1 PM</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Addis Ababa</span>
+              </div>
+            </div>
+            <p>Evidence-based techniques for building strong, healthy relationships with your children while maintaining boundaries and consistency.</p>
+            <button class="btn">Register Now</button>
+            <button class="btn btn-secondary">Learn More</button>
+          </div>
+        </div>
+        
+        <div class="workshop-card">
+          <img src="../images/sworkshop.jpg" alt="CBT Workshop" class="workshop-img"/>
+          <div class="workshop-content">
+            <span class="workshop-level level-advanced">Advanced</span>
+            <h3>CBT for Anxiety Management</h3>
+            <div class="workshop-meta">
+              <div class="meta-item">
+                <i class="far fa-calendar-alt"></i>
+                <span>July 10-31, 2025</span>
+              </div>
+              <div class="meta-item">
+                <i class="far fa-clock"></i>
+                <span>Weekly, 5-7 PM</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Addis Ababa</span>
+              </div>
+            </div>
+            <p>Learn cognitive behavioral techniques to identify and change anxiety-provoking thought patterns and behaviors.</p>
+            <button class="btn">Register Now</button>
+            <button class="btn btn-secondary">Learn More</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials">
+    <div class="container">
+      <h2 class="section-title">What Participants Say</h2>
+      <p class="section-subtitle">Hear from those who've experienced our workshops</p>
+      
+      <div class="testimonial-grid">
+        <div class="testimonial">
+          <p>"The mindfulness workshop gave me tools I use every day to manage my stress. The techniques are simple but powerful, and the facilitator created such a welcoming space to learn."</p>
+          <div class="client">Selam W.</div>
+          <div class="client-role">Mindfulness Workshop Participant</div>
+        </div>
+        
+        <div class="testimonial">
+          <p>"I've attended several workshops at Genuine Stage, and each one has given me practical skills that improved my relationships and emotional wellbeing. Highly recommend!"</p>
+          <div class="client">Daniel K.</div>
+          <div class="client-role">Multiple Workshop Participant</div>
+        </div>
+        
+        <div class="testimonial">
+          <p>"As a teacher, the communication skills workshop transformed how I interact with students and colleagues. The strategies are evidence-based but presented in such an accessible way."</p>
+          <div class="client">Amina J.</div>
+          <div class="client-role">Communication Skills Participant</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq">
+    <div class="container">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <p class="section-subtitle">Common questions about our workshops</p>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>How are workshops different from therapy groups?</span>
+          <i class="fas fa-plus"></i>
+        </div>
+        <div class="faq-answer">
+          <p>While therapy groups focus on processing emotions and personal experiences, workshops are educational and skill-based. Workshops teach specific techniques and strategies, with less emphasis on personal sharing. They're ideal for people who want to learn new skills but may not need or want the deeper emotional work of therapy.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Do I need any prior experience to join a workshop?</span>
+          <i class="fas fa-plus"></i>
+        </div>
+        <div class="faq-answer">
+          <p>No prior experience is needed for most of our workshops. We offer workshops at different levels (beginner, intermediate, advanced) and clearly indicate the recommended experience level in each workshop description. Our beginner workshops are designed to be accessible to everyone.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>What if I can't attend all sessions of a multi-week workshop?</span>
+          <i class="fas fa-plus"></i>
+        </div>
+        <div class="faq-answer">
+          <p>We understand that schedules can be unpredictable. While we recommend attending all sessions for the full benefit, we provide summary materials for any sessions you miss. Some workshops also offer make-up sessions or recorded content (for online workshops) when available.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Are workshops available in different languages?</span>
+          <i class="fas fa-plus"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Yes! We offer workshops in Amharic, Afaan Oromoo, Tigrinya, Arabic, and English. The language of instruction is clearly indicated in each workshop listing. If you don't see a workshop in your preferred language, please contact us as we may be able to arrange one.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta">
+    <div class="container">
+      <h2>Ready to Learn and Grow?</h2>
+      <p>Join one of our transformative workshops today</p>
+      <a href="contact.html" class="btn">Register for a Workshop</a>
+    </div>
+  </section>
+
+ <!-- Footer -->
+ <footer>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>About Genuine Stage</h3>
+        <p>Empowering individuals and communities through compassionate mental health support and personal development.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="individual-therapy.html">Individual Therapy</a></li>
+          <li><a href="group-programs.html">Group Programs</a></li>
+          <li><a href="workshops.html">Workshops</a></li>
+          <li><a href="online-sessions.html">Online Sessions</a></li>
+          <li><a href="crisis-support.html">Crisis Support</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="self-help-tools.html">Self-Help Tools</a></li>
+          <li><a href="mental-health-tips.html">Mental Health Tips</a></li>
+          <li><a href="community-forum.html">Community Forum</a></li>
+          <li><a href="faqs.html">FAQs</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Newsletter</h3>
+        <p>Stay updated with mental health tips and program announcements.</p>
+        <form>
+          <input type="email" placeholder="Your email" required>
+          <button type="submit" class="btn">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="social-links">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-telegram"></i></a>
+    </div>
+    <div class="copyright">
+      © 2025 Genuine Stage. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+  <!-- JavaScript for Toggle -->
+  <script>
+    const menuIcon = document.getElementById('menu-icon');
+    const sideMenu = document.getElementById('sideMenu');
+    const overlay = document.getElementById('overlay');
+
+    // Open/close menu
+    menuIcon.addEventListener('click', () => {
+      menuIcon.classList.toggle('active');
+      sideMenu.classList.toggle('active');
+      overlay.classList.toggle('active');
+    });
+
+    // Close menu when clicking overlay
+    overlay.addEventListener('click', () => {
+      menuIcon.classList.remove('active');
+      sideMenu.classList.remove('active');
+      overlay.classList.remove('active');
+    });
+
+    // Language Switcher
+    function changeLang(lang) {
+      alert("Language changed to: " + lang + "\nFull translation will be added in the full version.");
+      // In future: load JSON or use backend to switch content
+    }
+
+    // FAQ Accordion
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+      question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        const icon = question.querySelector('i');
+        
+        answer.classList.toggle('active');
+        icon.classList.toggle('fa-plus');
+        icon.classList.toggle('fa-minus');
+      });
+    });
+  </script>
+
+</body>
+</html>

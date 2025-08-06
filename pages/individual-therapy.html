@@ -1,0 +1,913 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Individual Therapy at Genuine Stage - Personalized mental health support with licensed professionals in Ethiopia."/>
+  <title>Individual Therapy | Genuine Stage - Personalized Mental Health Support</title>
+
+  <!-- Favicon (optional) -->
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon"/>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans&display=swap" rel="stylesheet"/>
+
+  <!-- Custom CSS -->
+  <style>
+    :root {
+      --primary: #66197F;
+      --primary-light: #8a4b9e;
+      --light: #f9f7fc;
+      --dark: #1e0a3c;
+      --gray: #555;
+      --light-gray: #f0f0f0;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      line-height: 1.7;
+      color: #333;
+      background-color: var(--light);
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: 'Poppins', sans-serif;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--white);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Navbar Styles - Purple Version */
+    .navbar {
+      background-color: var(--primary);
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+    }
+    
+    /* Contact & Social Icons Section */
+    .nav-icons {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+    
+    .nav-icons a {
+      color: var(--white);
+      font-size: 1.2rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      background: rgba(255,255,255,0.2);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .nav-icons a:hover {
+      color: var(--primary);
+      background: var(--white);
+      transform: translateY(-3px);
+    }
+    
+   /* Logo Container */
+    .logo-container {
+      width: 160px;
+      height: auto;
+      transition: all 0.3s ease;
+    }
+    
+    .logo {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      display: block;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .logo:hover {
+      transform: scale(1.05);
+    }
+    
+    .logo-name {
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: bold;
+      margin-top: 5px;
+      text-align: center;
+    }
+    
+    /* Hamburger Icon */
+    .menu-toggle {
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 10px;
+      z-index: 1001;
+    }
+    
+    .menu-toggle span {
+      width: 30px;
+      height: 3px;
+      background-color: var(--white);
+      transition: all 0.3s ease;
+    }
+    
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+    
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+    
+    /* Slide-out Menu */
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -300px;
+      width: 300px;
+      height: 100%;
+      background-color: var(--primary);
+      padding-top: 80px;
+      transition: left 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      z-index: 1000;
+      overflow-y: auto;
+      box-shadow: 5px 0 15px rgba(0,0,0,0.2);
+    }
+    
+    .side-menu.active {
+      left: 0;
+    }
+    
+    .side-menu ul {
+      list-style: none;
+      padding: 0 20px;
+    }
+    
+    .side-menu li a {
+      display: block;
+      padding: 15px 20px;
+      text-decoration: none;
+      color: var(--white);
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border-radius: 8px;
+      margin-bottom: 5px;
+    }
+    
+    .side-menu li a:hover {
+      background-color: var(--white);
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+    
+    /* Overlay to close menu when clicked outside */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      backdrop-filter: blur(5px);
+      display: none;
+      z-index: 999;
+      transition: all 0.3s ease;
+    }
+    
+    .overlay.active {
+      display: block;
+    }
+
+    /* Language Switcher */
+    .lang-switch {
+      margin-left: 20px;
+    }
+
+    .lang-switch select {
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 8px 12px;
+      border-radius: 5px;
+      background: var(--primary-light);
+      font-size: 14px;
+      color: var(--white);
+    }
+
+    .lang-switch select option {
+      background: var(--white);
+      color: var(--dark);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(102, 25, 127, 0.8), rgba(102, 25, 127, 0.8)), url('images/therapy-hero.jpg') no-repeat center center;
+      background-size: cover;
+      color: white;
+      text-align: center;
+      padding: 140px 20px 80px;
+      margin-top: 80px;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 800px;
+      margin: 0 auto 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: var(--white);
+      color: var(--primary);
+      padding: 14px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      background-color: var(--light);
+    }
+
+    /* Therapy Section */
+    .therapy {
+      padding: 80px 0;
+      background-color: white;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.2rem;
+      margin-bottom: 50px;
+      color: var(--gray);
+    }
+
+    .therapy-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .therapy-text {
+      padding: 20px;
+    }
+
+    .therapy-text h3 {
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+
+    .therapy-text p {
+      margin-bottom: 15px;
+    }
+
+    .therapy-img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    /* Benefits Section */
+    .benefits {
+      padding: 80px 0;
+      background: var(--light);
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .benefit-card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      text-align: center;
+      border: 1px solid rgba(102, 25, 127, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(102, 25, 127, 0.1);
+    }
+
+    .benefit-icon {
+      width: 80px;
+      height: 80px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      color: white;
+      font-size: 1.8rem;
+    }
+
+    /* Therapists Section */
+    .therapists {
+      padding: 80px 0;
+      background: white;
+    }
+
+    .therapists-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .therapist-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      text-align: center;
+      border: 1px solid rgba(102, 25, 127, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .therapist-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(102, 25, 127, 0.1);
+    }
+
+    .therapist-img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .therapist-info {
+      padding: 20px;
+    }
+
+    .therapist-info h3 {
+      margin-bottom: 5px;
+    }
+
+    .therapist-specialty {
+      color: var(--primary);
+      font-weight: 500;
+      margin-bottom: 15px;
+    }
+
+    /* CTA Section */
+    .cta {
+      padding: 80px 0;
+      background: linear-gradient(135deg, var(--primary) 0%, #8e2de2 100%);
+      color: white;
+      text-align: center;
+    }
+
+    .cta h2 {
+      color: white;
+      margin-bottom: 30px;
+    }
+
+    /* FAQ Section */
+    .faq {
+      padding: 80px 0;
+      background: var(--light);
+    }
+
+    .faq-item {
+      margin-bottom: 20px;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      border: 1px solid rgba(102, 25, 127, 0.1);
+    }
+
+    .faq-question {
+      padding: 20px;
+      background: var(--primary);
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-answer {
+      padding: 20px;
+      display: none;
+    }
+
+    .faq-answer.active {
+      display: block;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 60px 0 30px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-column h3 {
+      color: white;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--primary);
+    }
+
+    .footer-column ul {
+      list-style: none;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-column a {
+      color: #ccc;
+      transition: color 0.3s;
+    }
+
+    .footer-column a:hover {
+      color: white;
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 1.3rem;
+      margin-right: 15px;
+      transition: color 0.3s;
+    }
+
+    .social-links a:hover {
+      color: var(--primary);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero {
+        margin-top: 60px;
+        padding: 100px 20px 60px;
+      }
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      .hero p {
+        font-size: 1.1rem;
+      }
+      .nav-icons {
+        gap: 15px;
+      }
+      .nav-icons a {
+        font-size: 1rem;
+        width: 35px;
+        height: 35px;
+      }
+      .logo {
+        height: 40px;
+      }
+      .lang-switch select {
+        padding: 6px 10px;
+      }
+      .therapy-content {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .navbar {
+        padding: 10px 3%;
+      }
+      .hero {
+        padding: 80px 15px 50px;
+      }
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .btn {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <!-- Left: Social Icons -->
+    <div class="nav-icons">
+      <a href="#contact" title="Contact Us"><i class="fas fa-envelope"></i></a>
+      <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+    </div>
+
+    <!-- Center: Logo -->
+    <div class="logo-container">
+      <img src="../images/Logo.png" alt="Genuine Stage Logo" class="logo"/>
+      <div class="logo-name">Genuine Stage</div>
+    </div>
+
+    <!-- Right: Language Switcher & Hamburger Menu -->
+    <div style="display: flex; align-items: center;">
+      <div class="lang-switch">
+        <select onchange="changeLang(this.value)">
+          <option value="en">English</option>
+          <option value="am">አማርኛ</option>
+          <option value="om">Afaan Oromoo</option>
+          <option value="ti">ትግርኛ</option>
+          <option value="ar">العربية</option>
+        </select>
+      </div>
+      <div class="menu-toggle" id="menu-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Side Menu (Hamburger Menu) -->
+  <div class="side-menu" id="sideMenu">
+    <ul>
+      <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+      <li><a href="programs.html"><i class="fas fa-graduation-cap"></i> Programs</a></li>
+      <li><a href="resources.html"><i class="fas fa-book"></i> Resources</a></li>
+      <li><a href="testimonials.html"><i class="fas fa-quote-left"></i> Testimonials</a></li>
+      <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+      <li><a href="events.html"><i class="fas fa-calendar-alt"></i> Events</a></li>
+      <li><a href="community-forum.html"><i class="fas fa-comments"></i> Community Forum</a></li>
+      <li><a href="faqs.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
+    </ul>
+  </div>
+
+  <!-- Overlay to close menu when clicked outside -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>Individual Therapy</h1>
+      <p>Personalized mental health support with licensed professionals in a safe, confidential environment</p>
+      <a href="#book" class="btn">Book Your Session</a>
+    </div>
+  </section>
+
+  <!-- Therapy Section -->
+  <section class="therapy">
+    <div class="container">
+      <h2 class="section-title">Personalized Mental Health Support</h2>
+      <p class="section-subtitle">One-on-one sessions tailored to your unique needs and goals</p>
+      
+      <div class="therapy-content">
+        <div class="therapy-text">
+          <h3>What is Individual Therapy?</h3>
+          <p>Individual therapy is a collaborative process between you and a licensed therapist to explore your feelings, beliefs, and behaviors, work through challenging memories, identify aspects of your life you'd like to change, better understand yourself and others, set personal goals, and work toward desired change.</p>
+          <p>Our therapists provide a safe, confidential, and non-judgmental space where you can openly discuss your concerns and challenges. We offer therapy in multiple languages to ensure cultural and linguistic accessibility.</p>
+          <p>Each session typically lasts 50-60 minutes, with frequency determined by your needs and treatment plan. We offer both in-person and online therapy options for your convenience.</p>
+          <a href="#therapists" class="btn">Meet Our Therapists</a>
+        </div>
+        <div>
+          <img src="../images/Therapy session.jpg" alt="Therapy session" class="therapy-img"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="benefits">
+    <div class="container">
+      <h2 class="section-title">Benefits of Individual Therapy</h2>
+      <p class="section-subtitle">How therapy can help you achieve personal growth and emotional wellbeing</p>
+      
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <i class="fas fa-brain"></i>
+          </div>
+          <h3>Mental Health Support</h3>
+          <p>Effective treatment for anxiety, depression, trauma, and other mental health challenges with evidence-based approaches.</p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <i class="fas fa-heart"></i>
+          </div>
+          <h3>Emotional Healing</h3>
+          <p>Process difficult emotions, heal from past experiences, and develop healthier emotional regulation skills.</p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <i class="fas fa-user-shield"></i>
+          </div>
+          <h3>Safe Space</h3>
+          <p>A confidential environment where you can express yourself freely without fear of judgment.</p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <i class="fas fa-tools"></i>
+          </div>
+          <h3>Coping Strategies</h3>
+          <p>Learn practical tools and techniques to manage stress, improve relationships, and navigate life's challenges.</p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <i class="fas fa-lightbulb"></i>
+          </div>
+          <h3>Self-Discovery</h3>
+          <p>Gain deeper insight into your thoughts, feelings, and behaviors to make positive life changes.</p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <i class="fas fa-bullseye"></i>
+          </div>
+          <h3>Goal Achievement</h3>
+          <p>Clarify your values and work toward personal and professional goals with therapist support.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Therapists Section -->
+  <section class="therapists" id="therapists">
+    <div class="container">
+      <h2 class="section-title">Our Licensed Therapists</h2>
+      <p class="section-subtitle">Meet our team of compassionate, experienced mental health professionals</p>
+      
+      <div class="therapists-grid">
+        <div class="therapist-card">
+          <img src="../images/therapist1.jpg" alt="Therapist" class="therapist-img"/>
+          <div class="therapist-info">
+            <h3>Dr. Selamawit Bekele</h3>
+            <div class="therapist-specialty">Clinical Psychologist</div>
+            <p>Specializes in trauma therapy and cognitive behavioral approaches. Fluent in Amharic and English.</p>
+            <a href="#book" class="btn">Book Session</a>
+          </div>
+        </div>
+        
+        <div class="therapist-card">
+          <img src="../images/therapist2.jpg" alt="Therapist" class="therapist-img"/>
+          <div class="therapist-info">
+            <h3>Yohannes Assefa</h3>
+            <div class="therapist-specialty">Licensed Counselor</div>
+            <p>Focuses on anxiety, depression, and relationship issues. Works in Afaan Oromoo and English.</p>
+            <a href="#book" class="btn">Book Session</a>
+          </div>
+        </div>
+        
+        <div class="therapist-card">
+          <img src="../images/therapist3.jpg" alt="Therapist" class="therapist-img"/>
+          <div class="therapist-info">
+            <h3>Amina Mohammed</h3>
+            <div class="therapist-specialty">Marriage & Family Therapist</div>
+            <p>Specializes in family dynamics and interpersonal relationships. Fluent in Arabic and English.</p>
+            <a href="#book" class="btn">Book Session</a>
+          </div>
+        </div>
+        
+        <div class="therapist-card">
+          <img src="../images/therapist4.jpg" alt="Therapist" class="therapist-img"/>
+          <div class="therapist-info">
+            <h3>Dawit Tesfaye</h3>
+            <div class="therapist-specialty">Psychotherapist</div>
+            <p>Focuses on men's mental health and career-related stress. Works in Tigrinya and English.</p>
+            <a href="#book" class="btn">Book Session</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq">
+    <div class="container">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <p class="section-subtitle">Common questions about individual therapy</p>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>How do I know if I need therapy?</span>
+          <i class="fas fa-plus"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Therapy can be beneficial for anyone facing emotional challenges, life transitions, or seeking personal growth. Common signs you might benefit include persistent sadness or anxiety, difficulty managing emotions, relationship problems, significant life changes, trauma, or simply wanting to understand yourself better.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>How long does therapy typically last?</span>
+          <i class="fas fa-plus"></i>
+        </div>
+        <div class="faq-answer">
+          <p>The duration varies based on individual needs and goals. Some people benefit from short-term therapy (8-12 sessions) for specific issues, while others engage in longer-term therapy for deeper work. Your therapist will discuss recommendations after your initial assessment.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Is therapy confidential?</span>
+          <i class="fas fa-plus"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Yes, confidentiality is a fundamental part of therapy. What you discuss in sessions stays private, with few legal exceptions (risk of harm to self or others, or abuse of vulnerable populations). Your therapist will explain confidentiality in detail during your first session.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>What approaches do your therapists use?</span>
+          <i class="fas fa-plus"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Our therapists are trained in various evidence-based approaches including Cognitive Behavioral Therapy (CBT), Psychodynamic Therapy, Humanistic Therapy, Solution-Focused Therapy, and Trauma-Informed Care. Your therapist will tailor their approach to your specific needs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta" id="book">
+    <div class="container">
+      <h2>Ready to Begin Your Healing Journey?</h2>
+      <p>Take the first step toward emotional wellbeing today</p>
+      <a href="contact.html" class="btn">Book Your First Session</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>About Genuine Stage</h3>
+          <p>Empowering individuals and communities through compassionate mental health support and personal development.</p>
+        </div>
+        <div class="footer-column">
+          <h3>Services</h3>
+          <ul>
+            <li><a href="individual-therapy.html">Individual Therapy</a></li>
+            <li><a href="group-programs.html">Group Programs</a></li>
+            <li><a href="workshops.html">Workshops</a></li>
+            <li><a href="online-sessions.html">Online Sessions</a></li>
+            <li><a href="crisis-support.html">Crisis Support</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="self-help-tools.html">Self-Help Tools</a></li>
+            <li><a href="mental-health-tips.html">Mental Health Tips</a></li>
+            <li><a href="community-forum.html">Community Forum</a></li>
+            <li><a href="faqs.html">FAQs</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Newsletter</h3>
+          <p>Stay updated with mental health tips and program announcements.</p>
+          <form>
+            <input type="email" placeholder="Your email" required>
+            <button type="submit" class="btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-telegram"></i></a>
+      </div>
+      <div class="copyright">
+        © 2025 Genuine Stage. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript for Toggle -->
+  <script>
+    const menuIcon = document.getElementById('menu-icon');
+    const sideMenu = document.getElementById('sideMenu');
+    const overlay = document.getElementById('overlay');
+
+    // Open/close menu
+    menuIcon.addEventListener('click', () => {
+      menuIcon.classList.toggle('active');
+      sideMenu.classList.toggle('active');
+      overlay.classList.toggle('active');
+    });
+
+    // Close menu when clicking overlay
+    overlay.addEventListener('click', () => {
+      menuIcon.classList.remove('active');
+      sideMenu.classList.remove('active');
+      overlay.classList.remove('active');
+    });
+
+    // Language Switcher
+    function changeLang(lang) {
+      alert("Language changed to: " + lang + "\nFull translation will be added in the full version.");
+      // In future: load JSON or use backend to switch content
+    }
+
+    // FAQ Accordion
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+      question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        const icon = question.querySelector('i');
+        
+        answer.classList.toggle('active');
+        icon.classList.toggle('fa-plus');
+        icon.classList.toggle('fa-minus');
+      });
+    });
+  </script>
+
+</body>
+</html>

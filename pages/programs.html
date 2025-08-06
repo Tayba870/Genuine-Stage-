@@ -1,0 +1,795 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Explore Genuine Stage's transformative programs - mindfulness, relationship building, anxiety support, and more for personal growth."/>
+  <title>Programs | Genuine Stage - Personal Development Programs</title>
+
+  <!-- Favicon (optional) -->
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon"/>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans&display=swap" rel="stylesheet"/>
+
+  <!-- Custom CSS -->
+  <style>
+    :root {
+      --primary: #66197F;
+      --primary-light: #8a4b9e;
+      --light: #f9f7fc;
+      --dark: #1e0a3c;
+      --gray: #555;
+      --light-gray: #f0f0f0;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      line-height: 1.7;
+      color: #333;
+      background-color: var(--light);
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: 'Poppins', sans-serif;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--white);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Navbar Styles - Purple Version */
+    .navbar {
+      background-color: var(--primary);
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+    }
+    
+    /* Contact & Social Icons Section */
+    .nav-icons {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+    
+    .nav-icons a {
+      color: var(--white);
+      font-size: 1.2rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      background: rgba(255,255,255,0.2);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .nav-icons a:hover {
+      color: var(--primary);
+      background: var(--white);
+      transform: translateY(-3px);
+    }
+    
+    /* Logo Container */
+    .logo-container {
+      width: 160px;
+      height: auto;
+      transition: all 0.3s ease;
+    }
+    
+    .logo {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      display: block;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .logo:hover {
+      transform: scale(1.05);
+    }
+    
+    .logo-name {
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: bold;
+      margin-top: 5px;
+      text-align: center;
+    }
+    
+    /* Hamburger Icon */
+    .menu-toggle {
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 10px;
+      z-index: 1001;
+    }
+    
+    .menu-toggle span {
+      width: 30px;
+      height: 3px;
+      background-color: var(--white);
+      transition: all 0.3s ease;
+    }
+    
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+    
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+    
+    /* Slide-out Menu */
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -300px;
+      width: 300px;
+      height: 100%;
+      background-color: var(--primary);
+      padding-top: 80px;
+      transition: left 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      z-index: 1000;
+      overflow-y: auto;
+      box-shadow: 5px 0 15px rgba(0,0,0,0.2);
+    }
+    
+    .side-menu.active {
+      left: 0;
+    }
+    
+    .side-menu ul {
+      list-style: none;
+      padding: 0 20px;
+    }
+    
+    .side-menu li a {
+      display: block;
+      padding: 15px 20px;
+      text-decoration: none;
+      color: var(--white);
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border-radius: 8px;
+      margin-bottom: 5px;
+    }
+    
+    .side-menu li a:hover {
+      background-color: var(--white);
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+    
+    /* Overlay to close menu when clicked outside */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      backdrop-filter: blur(5px);
+      display: none;
+      z-index: 999;
+      transition: all 0.3s ease;
+    }
+    
+    .overlay.active {
+      display: block;
+    }
+
+    /* Language Switcher */
+    .lang-switch {
+      margin-left: 20px;
+    }
+
+    .lang-switch select {
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 8px 12px;
+      border-radius: 5px;
+      background: var(--primary-light);
+      font-size: 14px;
+      color: var(--white);
+    }
+
+    .lang-switch select option {
+      background: var(--white);
+      color: var(--dark);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(102, 25, 127, 0.8), rgba(102, 25, 127, 0.8)), url('images/programs-hero.jpg') no-repeat center center;
+      background-size: cover;
+      color: white;
+      text-align: center;
+      padding: 140px 20px 80px;
+      margin-top: 80px;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 800px;
+      margin: 0 auto 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: var(--white);
+      color: var(--primary);
+      padding: 14px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      background-color: var(--light);
+    }
+
+    /* Programs Section */
+    .programs {
+      padding: 80px 0;
+      background-color: white;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.2rem;
+      margin-bottom: 50px;
+      color: var(--gray);
+    }
+
+    .program-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .program-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+      border: 1px solid rgba(102, 25, 127, 0.1);
+    }
+
+    .program-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(102, 25, 127, 0.1);
+    }
+
+    .program-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .program-content {
+      padding: 25px;
+    }
+
+    .program-content h3 {
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+    }
+
+    .program-content p {
+      margin-bottom: 20px;
+      color: var(--gray);
+    }
+
+    /* Program Categories */
+    .categories {
+      padding: 60px 0;
+      background: var(--light);
+    }
+
+    .category-tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .category-tab {
+      padding: 12px 25px;
+      background: white;
+      border-radius: 50px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: 2px solid transparent;
+      color: var(--dark);
+    }
+
+    .category-tab:hover, .category-tab.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    /* Program Details */
+    .program-details {
+      padding: 80px 0;
+      background: white;
+    }
+
+    .detail-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+      overflow: hidden;
+      border: 1px solid rgba(102, 25, 127, 0.1);
+    }
+
+    .detail-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .detail-content {
+      padding: 40px;
+    }
+
+    .detail-content h3 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+
+    .detail-meta {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--gray);
+    }
+
+    .detail-content ul {
+      margin: 20px 0;
+      padding-left: 20px;
+    }
+
+    .detail-content li {
+      margin-bottom: 10px;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 60px 0 30px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-column h3 {
+      color: white;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--primary);
+    }
+
+    .footer-column ul {
+      list-style: none;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-column a {
+      color: #ccc;
+      transition: color 0.3s;
+    }
+
+    .footer-column a:hover {
+      color: white;
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 1.3rem;
+      margin-right: 15px;
+      transition: color 0.3s;
+    }
+
+    .social-links a:hover {
+      color: var(--primary);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero {
+        margin-top: 60px;
+        padding: 100px 20px 60px;
+      }
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      .hero p {
+        font-size: 1.1rem;
+      }
+      .nav-icons {
+        gap: 15px;
+      }
+      .nav-icons a {
+        font-size: 1rem;
+        width: 35px;
+        height: 35px;
+      }
+      .logo {
+        height: 40px;
+      }
+      .lang-switch select {
+        padding: 6px 10px;
+      }
+      .detail-card {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .navbar {
+        padding: 10px 3%;
+      }
+      .hero {
+        padding: 80px 15px 50px;
+      }
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .btn {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <!-- Left: Social Icons -->
+    <div class="nav-icons">
+      <a href="#contact" title="Contact Us"><i class="fas fa-envelope"></i></a>
+      <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+    </div>
+
+    <!-- Center: Logo -->
+    <div class="logo-container">
+      <img src="../images/Logo.png" alt="Genuine Stage Logo" class="logo"/>
+      <div class="logo-name">Genuine Stage</div>
+    </div>
+
+    <!-- Right: Language Switcher & Hamburger Menu -->
+    <div style="display: flex; align-items: center;">
+      <div class="lang-switch">
+        <select onchange="changeLang(this.value)">
+          <option value="en">English</option>
+          <option value="am">አማርኛ</option>
+          <option value="om">Afaan Oromoo</option>
+          <option value="ti">ትግርኛ</option>
+          <option value="ar">العربية</option>
+        </select>
+      </div>
+      <div class="menu-toggle" id="menu-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Side Menu (Hamburger Menu) -->
+  <div class="side-menu" id="sideMenu">
+    <ul>
+      <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+      <li><a href="programs.html"><i class="fas fa-graduation-cap"></i> Programs</a></li>
+      <li><a href="resources.html"><i class="fas fa-book"></i> Resources</a></li>
+      <li><a href="testimonials.html"><i class="fas fa-quote-left"></i> Testimonials</a></li>
+      <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+      <li><a href="events.html"><i class="fas fa-calendar-alt"></i> Events</a></li>
+      <li><a href="community-forum.html"><i class="fas fa-comments"></i> Community Forum</a></li>
+      <li><a href="faqs.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
+    </ul>
+  </div>
+
+  <!-- Overlay to close menu when clicked outside -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>Transformative Programs for Growth</h1>
+      <p>Discover our structured programs designed to support your mental wellness and personal development journey</p>
+      <a href="#programs" class="btn">View All Programs</a>
+    </div>
+  </section>
+
+  <!-- Programs Section -->
+  <section class="programs" id="programs">
+    <div class="container">
+      <h2 class="section-title">Featured Programs</h2>
+      <p class="section-subtitle">Structured programs designed to support your specific needs and goals</p>
+      
+      <div class="program-grid">
+        <div class="program-card">
+          <img src="../images/Mindfulness & Stress Reduction Program.jpg" alt="Mindfulness & Stress Reduction" class="program-img"/>
+          <div class="program-content">
+            <h3>Mindfulness & Stress Reduction</h3>
+            <p>8-week program combining mindfulness meditation with cognitive behavioral techniques to help you manage stress and cultivate inner peace.</p>
+            <button class="btn">Register Now</button>
+          </div>
+        </div>
+        
+        <div class="program-card">
+          <img src="../images/Healthy Relationships Program.jpg" alt="Healthy Relationships" class="program-img"/>
+          <div class="program-content">
+            <h3>Healthy Relationships</h3>
+            <p>Learn essential communication skills and build stronger, more fulfilling connections with partners, family, and friends.</p>
+            <button class="btn">Register Now</button>
+          </div>
+        </div>
+        
+        <div class="program-card">
+          <img src="../images/Anxiety Support Group.jpg" alt="Anxiety Support Group" class="program-img"/>
+          <div class="program-content">
+            <h3>Anxiety Support Group</h3>
+            <p>Peer support group providing practical coping strategies and tools for managing anxiety in daily life.</p>
+            <button class="btn">Register Now</button>
+          </div>
+        </div>
+        
+        <div class="program-card">
+          <img src="../images/Confidence Building Program.jpg" alt="Confidence Building" class="program-img"/>
+          <div class="program-content">
+            <h3>Confidence Building</h3>
+            <p>6-week transformational program to overcome self-doubt and develop unshakable self-confidence.</p>
+            <button class="btn">Register Now</button>
+          </div>
+        </div>
+        
+        <div class="program-card">
+          <img src="../images/Positive Parenting Program.jpg" alt="Positive Parenting" class="program-img"/>
+          <div class="program-content">
+            <h3>Positive Parenting</h3>
+            <p>Evidence-based strategies for raising emotionally healthy children while maintaining your own wellbeing.</p>
+            <button class="btn">Register Now</button>
+          </div>
+        </div>
+        
+        <div class="program-card">
+          <img src="../images/Combined Career Growth & Leadership Program.jpg" alt="Career Growth" class="program-img"/>
+          <div class="program-content">
+            <h3>Career Growth & Leadership</h3>
+            <p>Develop leadership skills, emotional intelligence, and career advancement strategies.</p>
+            <button class="btn">Register Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Program Categories -->
+  <section class="categories">
+    <div class="container">
+      <h2 class="section-title">Program Categories</h2>
+      <p class="section-subtitle">Find the perfect program for your needs</p>
+      
+      <div class="category-tabs">
+        <div class="category-tab active">All Programs</div>
+        <div class="category-tab">Mental Wellness</div>
+        <div class="category-tab">Relationships</div>
+        <div class="category-tab">Personal Growth</div>
+        <div class="category-tab">Career Development</div>
+        <div class="category-tab">Family & Parenting</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Program Details Example -->
+  <section class="program-details">
+    <div class="container">
+      <h2 class="section-title">Program Spotlight</h2>
+      <p class="section-subtitle">Featured program details</p>
+      
+      <div class="detail-card">
+        <img src="../images/Mindfulness Program Details.jpg" alt="Mindfulness Program Details" class="detail-img"/>
+        <div class="detail-content">
+          <h3>Mindfulness & Stress Reduction Program</h3>
+          <div class="detail-meta">
+            <div class="meta-item">
+              <i class="far fa-clock"></i>
+              <span>8 weeks</span>
+            </div>
+            <div class="meta-item">
+              <i class="fas fa-users"></i>
+              <span>Group sessions</span>
+            </div>
+            <div class="meta-item">
+              <i class="fas fa-language"></i>
+              <span>Available in 5 languages</span>
+            </div>
+          </div>
+          <p>This comprehensive program combines evidence-based mindfulness techniques with cognitive behavioral therapy to help you:</p>
+          <ul>
+            <li>Reduce stress and anxiety levels</li>
+            <li>Improve emotional regulation</li>
+            <li>Enhance focus and concentration</li>
+            <li>Develop healthier coping mechanisms</li>
+            <li>Cultivate greater self-awareness</li>
+          </ul>
+          <button class="btn">Enroll Now</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>About Genuine Stage</h3>
+          <p>Empowering individuals and communities through compassionate mental health support and personal development.</p>
+        </div>
+        <div class="footer-column">
+          <h3>Services</h3>
+          <ul>
+            <li><a href="individual-therapy.html">Individual Therapy</a></li>
+            <li><a href="group-programs.html">Group Programs</a></li>
+            <li><a href="workshops.html">Workshops</a></li>
+            <li><a href="online-sessions.html">Online Sessions</a></li>
+            <li><a href="crisis-support.html">Crisis Support</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="self-help-tools.html">Self-Help Tools</a></li>
+            <li><a href="mental-health-tips.html">Mental Health Tips</a></li>
+            <li><a href="community-forum.html">Community Forum</a></li>
+            <li><a href="faqs.html">FAQs</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Newsletter</h3>
+          <p>Stay updated with mental health tips and program announcements.</p>
+          <form>
+            <input type="email" placeholder="Your email" required>
+            <button type="submit" class="btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-telegram"></i></a>
+      </div>
+      <div class="copyright">
+        © 2025 Genuine Stage. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript for Toggle -->
+  <script>
+    const menuIcon = document.getElementById('menu-icon');
+    const sideMenu = document.getElementById('sideMenu');
+    const overlay = document.getElementById('overlay');
+
+    // Open/close menu
+    menuIcon.addEventListener('click', () => {
+      menuIcon.classList.toggle('active');
+      sideMenu.classList.toggle('active');
+      overlay.classList.toggle('active');
+    });
+
+    // Close menu when clicking overlay
+    overlay.addEventListener('click', () => {
+      menuIcon.classList.remove('active');
+      sideMenu.classList.remove('active');
+      overlay.classList.remove('active');
+    });
+
+    // Language Switcher
+    function changeLang(lang) {
+      alert("Language changed to: " + lang + "\nFull translation will be added in the full version.");
+      // In future: load JSON or use backend to switch content
+    }
+  </script>
+
+</body>
+</html>

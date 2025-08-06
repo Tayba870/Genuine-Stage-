@@ -1,0 +1,1016 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Group Programs at Genuine Stage - Supportive group therapy and workshops for shared healing and growth in Ethiopia."/>
+  <title>Group Programs | Genuine Stage - Supportive Group Therapy</title>
+
+  <!-- Favicon (optional) -->
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon"/>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans&display=swap" rel="stylesheet"/>
+
+  <!-- Custom CSS -->
+  <style>
+    :root {
+      --primary: #66197F;
+      --primary-light: #8a4b9e;
+      --light: #f9f7fc;
+      --dark: #1e0a3c;
+      --gray: #555;
+      --light-gray: #f0f0f0;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      line-height: 1.7;
+      color: #333;
+      background-color: var(--light);
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: 'Poppins', sans-serif;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--white);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Navbar Styles - Purple Version */
+    .navbar {
+      background-color: var(--primary);
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+    }
+    
+    /* Contact & Social Icons Section */
+    .nav-icons {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+    
+    .nav-icons a {
+      color: var(--white);
+      font-size: 1.2rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      background: rgba(255,255,255,0.2);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .nav-icons a:hover {
+      color: var(--primary);
+      background: var(--white);
+      transform: translateY(-3px);
+    }
+    
+   /* Logo Container */
+    .logo-container {
+      width: 160px;
+      height: auto;
+      transition: all 0.3s ease;
+    }
+    
+    .logo {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      display: block;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .logo:hover {
+      transform: scale(1.05);
+    }
+    
+    .logo-name {
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: bold;
+      margin-top: 5px;
+      text-align: center;
+    }
+    
+    /* Hamburger Icon */
+    .menu-toggle {
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 10px;
+      z-index: 1001;
+    }
+    
+    .menu-toggle span {
+      width: 30px;
+      height: 3px;
+      background-color: var(--white);
+      transition: all 0.3s ease;
+    }
+    
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+    
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+    
+    /* Slide-out Menu */
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -300px;
+      width: 300px;
+      height: 100%;
+      background-color: var(--primary);
+      padding-top: 80px;
+      transition: left 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      z-index: 1000;
+      overflow-y: auto;
+      box-shadow: 5px 0 15px rgba(0,0,0,0.2);
+    }
+    
+    .side-menu.active {
+      left: 0;
+    }
+    
+    .side-menu ul {
+      list-style: none;
+      padding: 0 20px;
+    }
+    
+    .side-menu li a {
+      display: block;
+      padding: 15px 20px;
+      text-decoration: none;
+      color: var(--white);
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border-radius: 8px;
+      margin-bottom: 5px;
+    }
+    
+    .side-menu li a:hover {
+      background-color: var(--white);
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+    
+    /* Overlay to close menu when clicked outside */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      backdrop-filter: blur(5px);
+      display: none;
+      z-index: 999;
+      transition: all 0.3s ease;
+    }
+    
+    .overlay.active {
+      display: block;
+    }
+
+    /* Language Switcher */
+    .lang-switch {
+      margin-left: 20px;
+    }
+
+    .lang-switch select {
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 8px 12px;
+      border-radius: 5px;
+      background: var(--primary-light);
+      font-size: 14px;
+      color: var(--white);
+    }
+
+    .lang-switch select option {
+      background: var(--white);
+      color: var(--dark);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(102, 25, 127, 0.8), rgba(102, 25, 127, 0.8)), url('images/group-programs-hero.jpg') no-repeat center center;
+      background-size: cover;
+      color: white;
+      text-align: center;
+      padding: 140px 20px 80px;
+      margin-top: 80px;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 800px;
+      margin: 0 auto 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: var(--white);
+      color: var(--primary);
+      padding: 14px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      background-color: var(--light);
+    }
+
+    /* Group Programs Section */
+    .group-programs {
+      padding: 80px 0;
+      background-color: white;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.2rem;
+      margin-bottom: 50px;
+      color: var(--gray);
+    }
+
+    .programs-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .programs-text {
+      padding: 20px;
+    }
+
+    .programs-text h3 {
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+
+    .programs-text p {
+      margin-bottom: 15px;
+    }
+
+    .programs-img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    /* Benefits Section */
+    .benefits {
+      padding: 80px 0;
+      background: var(--light);
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .benefit-card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      text-align: center;
+      border: 1px solid rgba(102, 25, 127, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(102, 25, 127, 0.1);
+    }
+
+    .benefit-icon {
+      width: 80px;
+      height: 80px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      color: white;
+      font-size: 1.8rem;
+    }
+
+    /* Current Groups Section */
+    .current-groups {
+      padding: 80px 0;
+      background: white;
+    }
+
+    .groups-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .group-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border: 1px solid rgba(102, 25, 127, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .group-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(102, 25, 127, 0.1);
+    }
+
+    .group-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .group-content {
+      padding: 25px;
+    }
+
+    .group-content h3 {
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+    }
+
+    .group-meta {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 15px;
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* Testimonials Section */
+    .testimonials {
+      padding: 80px 0;
+      background: var(--light);
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .testimonial {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border-left: 5px solid var(--primary);
+    }
+
+    .testimonial p {
+      font-style: italic;
+      margin-bottom: 15px;
+    }
+
+    .client {
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    /* FAQ Section */
+    .faq {
+      padding: 80px 0;
+      background: white;
+    }
+
+    .faq-item {
+      margin-bottom: 20px;
+      background: var(--light);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      border: 1px solid rgba(102, 25, 127, 0.1);
+    }
+
+    .faq-question {
+      padding: 20px;
+      background: var(--primary);
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-answer {
+      padding: 20px;
+      display: none;
+    }
+
+    .faq-answer.active {
+      display: block;
+    }
+
+    /* CTA Section */
+    .cta {
+      padding: 80px 0;
+      background: linear-gradient(135deg, var(--primary) 0%, #8e2de2 100%);
+      color: white;
+      text-align: center;
+    }
+
+    .cta h2 {
+      color: white;
+      margin-bottom: 30px;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 60px 0 30px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-column h3 {
+      color: white;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--primary);
+    }
+
+    .footer-column ul {
+      list-style: none;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-column a {
+      color: #ccc;
+      transition: color 0.3s;
+    }
+
+    .footer-column a:hover {
+      color: white;
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 1.3rem;
+      margin-right: 15px;
+      transition: color 0.3s;
+    }
+
+    .social-links a:hover {
+      color: var(--primary);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero {
+        margin-top: 60px;
+        padding: 100px 20px 60px;
+      }
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      .hero p {
+        font-size: 1.1rem;
+      }
+      .nav-icons {
+        gap: 15px;
+      }
+      .nav-icons a {
+        font-size: 1rem;
+        width: 35px;
+        height: 35px;
+      }
+      .logo {
+        height: 40px;
+      }
+      .lang-switch select {
+        padding: 6px 10px;
+      }
+      .programs-content {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .navbar {
+        padding: 10px 3%;
+      }
+      .hero {
+        padding: 80px 15px 50px;
+      }
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .btn {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <!-- Left: Social Icons -->
+    <div class="nav-icons">
+      <a href="#contact" title="Contact Us"><i class="fas fa-envelope"></i></a>
+      <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+    </div>
+
+    <!-- Center: Logo -->
+    <div class="logo-container">
+      <img src="../images/Logo.png" alt="Genuine Stage Logo" class="logo"/>
+      <div class="logo-name">Genuine Stage</div>
+    </div>
+
+    <!-- Right: Language Switcher & Hamburger Menu -->
+    <div style="display: flex; align-items: center;">
+      <div class="lang-switch">
+        <select onchange="changeLang(this.value)">
+          <option value="en">English</option>
+          <option value="am">አማርኛ</option>
+          <option value="om">Afaan Oromoo</option>
+          <option value="ti">ትግርኛ</option>
+          <option value="ar">العربية</option>
+        </select>
+      </div>
+      <div class="menu-toggle" id="menu-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Side Menu (Hamburger Menu) -->
+  <div class="side-menu" id="sideMenu">
+    <ul>
+      <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+      <li><a href="programs.html"><i class="fas fa-graduation-cap"></i> Programs</a></li>
+      <li><a href="resources.html"><i class="fas fa-book"></i> Resources</a></li>
+      <li><a href="testimonials.html"><i class="fas fa-quote-left"></i> Testimonials</a></li>
+      <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+      <li><a href="events.html"><i class="fas fa-calendar-alt"></i> Events</a></li>
+      <li><a href="community-forum.html"><i class="fas fa-comments"></i> Community Forum</a></li>
+      <li><a href="faqs.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
+    </ul>
+  </div>
+
+  <!-- Overlay to close menu when clicked outside -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>Group Programs</h1>
+      <p>Find connection, support, and healing in our therapeutic group settings</p>
+      <a href="#current-groups" class="btn">View Current Groups</a>
+    </div>
+  </section>
+
+  <!-- Group Programs Section -->
+  <section class="group-programs">
+    <div class="container">
+      <h2 class="section-title">Shared Healing Experiences</h2>
+      <p class="section-subtitle">The power of group therapy and workshops</p>
+      
+      <div class="programs-content">
+        <div class="programs-text">
+          <h3>What Are Group Programs?</h3>
+          <p>Our group programs bring together individuals facing similar challenges to share experiences, learn from each other, and develop coping strategies under the guidance of licensed therapists. These sessions create a supportive community where members can feel understood and less alone in their struggles.</p>
+          <p>We offer both therapeutic groups (focused on specific mental health concerns) and psychoeducational workshops (teaching skills for personal growth). Groups typically meet weekly for 8-12 sessions, with 6-12 participants per group to ensure everyone gets attention.</p>
+          <p>All groups are facilitated by experienced mental health professionals who create a safe, confidential space for sharing and growth. Many participants find group therapy to be equally or even more effective than individual therapy for certain concerns.</p>
+          <a href="#benefits" class="btn">Learn About Benefits</a>
+        </div>
+        <div>
+          <img src="../images/group programs.jpg" alt="Group therapy session" class="programs-img"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="benefits" id="benefits">
+    <div class="container">
+      <h2 class="section-title">Benefits of Group Programs</h2>
+      <p class="section-subtitle">Why group therapy can be transformative</p>
+      
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3>Shared Experiences</h3>
+          <p>Realize you're not alone in your struggles by connecting with others who understand what you're going through.</p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <i class="fas fa-comments"></i>
+          </div>
+          <h3>Multiple Perspectives</h3>
+          <p>Gain insights from different viewpoints and learn alternative ways to handle challenges.</p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <i class="fas fa-hand-holding-heart"></i>
+          </div>
+          <h3>Support Network</h3>
+          <p>Build meaningful connections with people who can offer encouragement and accountability.</p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <i class="fas fa-money-bill-wave"></i>
+          </div>
+          <h3>Cost-Effective</h3>
+          <p>Receive professional support at a lower cost than individual therapy sessions.</p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <i class="fas fa-chalkboard-teacher"></i>
+          </div>
+          <h3>Skill Building</h3>
+          <p>Learn and practice new coping strategies in a safe environment with immediate feedback.</p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <i class="fas fa-heart"></i>
+          </div>
+          <h3>Social Confidence</h3>
+          <p>Improve interpersonal skills and reduce social anxiety through guided group interactions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Current Groups Section -->
+  <section class="current-groups" id="current-groups">
+    <div class="container">
+      <h2 class="section-title">Current Group Offerings</h2>
+      <p class="section-subtitle">Join one of our upcoming groups</p>
+      
+      <div class="groups-grid">
+        <div class="group-card">
+          <img src="../images/Anxiety Support Group main.jpg" alt="Anxiety Support Group" class="group-img"/>
+          <div class="group-content">
+            <h3>Anxiety Support Group</h3>
+            <div class="group-meta">
+              <div class="meta-item">
+                <i class="far fa-clock"></i>
+                <span>8 weeks</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Tuesdays 5-6:30 PM</span>
+              </div>
+            </div>
+            <p>For those struggling with anxiety disorders, panic attacks, or general anxiety. Learn evidence-based techniques to manage symptoms.</p>
+            <button class="btn">Join This Group</button>
+          </div>
+        </div>
+        
+        <div class="group-card">
+          <img src="../images/Grief & Loss Group.jpg" alt="Grief & Loss Group" class="group-img"/>
+          <div class="group-content">
+            <h3>Grief & Loss Group</h3>
+            <div class="group-meta">
+              <div class="meta-item">
+                <i class="far fa-clock"></i>
+                <span>10 weeks</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Wednesdays 4-5:30 PM</span>
+              </div>
+            </div>
+            <p>A compassionate space to process loss, whether of a loved one, relationship, or life circumstance. Open to all types of grief.</p>
+            <button class="btn">Join This Group</button>
+          </div>
+        </div>
+        
+        <div class="group-card">
+          <img src="../images/Parenting Support Group.jpg" alt="Parenting Support Group" class="group-img"/>
+          <div class="group-content">
+            <h3>Parenting Support Group</h3>
+            <div class="group-meta">
+              <div class="meta-item">
+                <i class="far fa-clock"></i>
+                <span>6 weeks</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Saturdays 10-11:30 AM</span>
+              </div>
+            </div>
+            <p>For parents navigating challenges with children of any age. Share experiences and learn positive parenting strategies.</p>
+            <button class="btn">Join This Group</button>
+          </div>
+        </div>
+        
+        <div class="group-card">
+          <img src="../images/Mindfulness Workshop.jpg" alt="Mindfulness Workshop" class="group-img"/>
+          <div class="group-content">
+            <h3>Mindfulness Workshop</h3>
+            <div class="group-meta">
+              <div class="meta-item">
+                <i class="far fa-clock"></i>
+                <span>4 weeks</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Thursdays 6-7:30 PM</span>
+              </div>
+            </div>
+            <p>Learn and practice mindfulness techniques to reduce stress, improve focus, and enhance emotional regulation.</p>
+            <button class="btn">Join This Group</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials">
+    <div class="container">
+      <h2 class="section-title">What Participants Say</h2>
+      <p class="section-subtitle">Hear from those who've experienced our groups</p>
+      
+      <div class="testimonial-grid">
+        <div class="testimonial">
+          <p>"The anxiety group changed my life. Hearing others share similar struggles made me feel less alone, and the coping strategies we learned together really work."</p>
+          <div class="client">Meseret K.</div>
+          <div class="client-role">Anxiety Group Participant</div>
+        </div>
+        
+        <div class="testimonial">
+          <p>"After losing my husband, I didn't think anything could help. The grief group gave me a safe space to process my emotions with people who truly understood."</p>
+          <div class="client">Alem T.</div>
+          <div class="client-role">Grief Group Participant</div>
+        </div>
+        
+        <div class="testimonial">
+          <p>"The parenting group helped me connect with other parents facing similar challenges. The facilitator provided such valuable insights and practical advice."</p>
+          <div class="client">Yohannes B.</div>
+          <div class="client-role">Parenting Group Participant</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq">
+    <div class="container">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <p class="section-subtitle">Common questions about group programs</p>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>How is group therapy different from individual therapy?</span>
+          <i class="fas fa-plus"></i>
+        </div>
+        <div class="faq-answer">
+          <p>While individual therapy focuses solely on you and your therapist, group therapy involves sharing with and learning from others facing similar challenges. The group dynamic often provides unique insights and support that individual sessions can't replicate. Many people benefit from doing both simultaneously.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Will I have to share personal details with strangers?</span>
+          <i class="fas fa-plus"></i>
+        </div>
+        <div class="faq-answer">
+          <p>You share only what you're comfortable with. Groups establish confidentiality agreements, and participation levels vary. Many members find that as trust builds, they naturally want to share more. The facilitator ensures a safe, respectful environment for everyone.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>What if I don't connect with the group?</span>
+          <i class="fas fa-plus"></i>
+        </div>
+        <div class="faq-answer">
+          <p>It's normal to need a few sessions to feel comfortable. If after 2-3 sessions you still don't feel it's the right fit, we can discuss transferring you to a different group or exploring other options. Your comfort and progress are our priorities.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Are groups available in different languages?</span>
+          <i class="fas fa-plus"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Yes! We currently offer groups in Amharic, Afaan Oromoo, Tigrinya, Arabic, and English. Please inquire about current availability for specific language groups when you contact us.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta">
+    <div class="container">
+      <h2>Ready to Join a Supportive Community?</h2>
+      <p>Take the first step toward shared healing and growth</p>
+      <a href="contact.html" class="btn">Register for a Group</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>About Genuine Stage</h3>
+          <p>Empowering individuals and communities through compassionate mental health support and personal development.</p>
+        </div>
+        <div class="footer-column">
+          <h3>Services</h3>
+          <ul>
+            <li><a href="individual-therapy.html">Individual Therapy</a></li>
+            <li><a href="group-programs.html">Group Programs</a></li>
+            <li><a href="workshops.html">Workshops</a></li>
+            <li><a href="online-sessions.html">Online Sessions</a></li>
+            <li><a href="crisis-support.html">Crisis Support</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="self-help-tools.html">Self-Help Tools</a></li>
+            <li><a href="mental-health-tips.html">Mental Health Tips</a></li>
+            <li><a href="community-forum.html">Community Forum</a></li>
+            <li><a href="faqs.html">FAQs</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Newsletter</h3>
+          <p>Stay updated with mental health tips and program announcements.</p>
+          <form>
+            <input type="email" placeholder="Your email" required>
+            <button type="submit" class="btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-telegram"></i></a>
+      </div>
+      <div class="copyright">
+        © 2025 Genuine Stage. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript for Toggle -->
+  <script>
+    const menuIcon = document.getElementById('menu-icon');
+    const sideMenu = document.getElementById('sideMenu');
+    const overlay = document.getElementById('overlay');
+
+    // Open/close menu
+    menuIcon.addEventListener('click', () => {
+      menuIcon.classList.toggle('active');
+      sideMenu.classList.toggle('active');
+      overlay.classList.toggle('active');
+    });
+
+    // Close menu when clicking overlay
+    overlay.addEventListener('click', () => {
+      menuIcon.classList.remove('active');
+      sideMenu.classList.remove('active');
+      overlay.classList.remove('active');
+    });
+
+    // Language Switcher
+    function changeLang(lang) {
+      alert("Language changed to: " + lang + "\nFull translation will be added in the full version.");
+      // In future: load JSON or use backend to switch content
+    }
+
+    // FAQ Accordion
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+      question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        const icon = question.querySelector('i');
+        
+        answer.classList.toggle('active');
+        icon.classList.toggle('fa-plus');
+        icon.classList.toggle('fa-minus');
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,1136 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Self-Help Tools at Genuine Stage - Practical resources for mental wellness and personal growth in Ethiopia."/>
+  <title>Self-Help Tools | Genuine Stage - Mental Health Resources</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon"/>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans&display=swap" rel="stylesheet"/>
+
+  <!-- Custom CSS -->
+  <style>
+    :root {
+      --primary: #66197F;
+      --primary-light: #8a4b9e;
+      --light: #f9f7fc;
+      --dark: #1e0a3c;
+      --gray: #555;
+      --light-gray: #f0f0f0;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      line-height: 1.7;
+      color: #333;
+      background-color: var(--light);
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: 'Poppins', sans-serif;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--white);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Navbar Styles */
+    .navbar {
+      background-color: var(--primary);
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+    }
+    
+    .nav-icons {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+    
+    .nav-icons a {
+      color: var(--white);
+      font-size: 1.2rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      background: rgba(255,255,255,0.2);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .nav-icons a:hover {
+      color: var(--primary);
+      background: var(--white);
+      transform: translateY(-3px);
+    }
+    
+    /* Logo Container */
+    .logo-container {
+      width: 160px;
+      height: auto;
+      transition: all 0.3s ease;
+    }
+    
+    .logo {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      display: block;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .logo:hover {
+      transform: scale(1.05);
+    }
+    
+    .logo-name {
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: bold;
+      margin-top: 5px;
+      text-align: center;
+    }
+    
+    .menu-toggle {
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 10px;
+      z-index: 1001;
+    }
+    
+    .menu-toggle span {
+      width: 30px;
+      height: 3px;
+      background-color: var(--white);
+      transition: all 0.3s ease;
+    }
+    
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+    
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+    
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -300px;
+      width: 300px;
+      height: 100%;
+      background-color: var(--primary);
+      padding-top: 80px;
+      transition: left 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      z-index: 1000;
+      overflow-y: auto;
+      box-shadow: 5px 0 15px rgba(0,0,0,0.2);
+    }
+    
+    .side-menu.active {
+      left: 0;
+    }
+    
+    .side-menu ul {
+      list-style: none;
+      padding: 0 20px;
+    }
+    
+    .side-menu li a {
+      display: block;
+      padding: 15px 20px;
+      text-decoration: none;
+      color: var(--white);
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border-radius: 8px;
+      margin-bottom: 5px;
+    }
+    
+    .side-menu li a:hover {
+      background-color: var(--white);
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+    
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      backdrop-filter: blur(5px);
+      display: none;
+      z-index: 999;
+      transition: all 0.3s ease;
+    }
+    
+    .overlay.active {
+      display: block;
+    }
+
+    .lang-switch {
+      margin-left: 20px;
+    }
+
+    .lang-switch select {
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 8px 12px;
+      border-radius: 5px;
+      background: var(--primary-light);
+      font-size: 14px;
+      color: var(--white);
+    }
+
+    .lang-switch select option {
+      background: var(--white);
+      color: var(--dark);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(102, 25, 127, 0.8), rgba(102, 25, 127, 0.8)), url('images/self-help-hero.jpg') no-repeat center center;
+      background-size: cover;
+      color: white;
+      text-align: center;
+      padding: 140px 20px 80px;
+      margin-top: 80px;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 800px;
+      margin: 0 auto 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: var(--white);
+      color: var(--primary);
+      padding: 14px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      background-color: var(--light);
+    }
+
+    .btn-secondary {
+      background-color: var(--primary-light);
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--primary);
+    }
+
+    /* Self-Help Tools Section */
+    .self-help-tools {
+      padding: 80px 0;
+      background-color: white;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.2rem;
+      margin-bottom: 50px;
+      color: var(--gray);
+    }
+
+    .categories {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 40px;
+    }
+
+    .category-btn {
+      padding: 10px 20px;
+      background: var(--light);
+      border-radius: 50px;
+      font-weight: 600;
+      color: var(--primary);
+      cursor: pointer;
+      transition: all 0.3s;
+      border: 1px solid var(--primary-light);
+    }
+
+    .category-btn.active, .category-btn:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    .search-bar {
+      max-width: 600px;
+      margin: 0 auto 40px;
+      position: relative;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 15px 20px;
+      border-radius: 50px;
+      border: 1px solid var(--light-gray);
+      font-size: 1rem;
+      padding-right: 50px;
+    }
+
+    .search-bar button {
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+    }
+
+    /* Tools Grid */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .tool-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border: 1px solid rgba(102, 25, 127, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(102, 25, 127, 0.1);
+    }
+
+    .tool-img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .tool-content {
+      padding: 25px;
+    }
+
+    .tool-category {
+      display: inline-block;
+      padding: 3px 10px;
+      background: var(--light);
+      color: var(--primary);
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .tool-meta {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 15px;
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* Multimedia Elements */
+    .media-container {
+      margin: 30px 0;
+    }
+
+    .pdf-preview {
+      border: 1px solid var(--light-gray);
+      padding: 20px;
+      border-radius: 10px;
+      margin: 20px 0;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .pdf-icon {
+      font-size: 3rem;
+      color: var(--primary);
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
+      overflow: hidden;
+      margin: 20px 0;
+      border-radius: 10px;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .image-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .gallery-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .gallery-image:hover {
+      transform: scale(1.03);
+    }
+
+    /* Tool Types */
+    .tool-types {
+      padding: 80px 0;
+      background: var(--light);
+    }
+
+    .types-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .type-card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      text-align: center;
+      border: 1px solid rgba(102, 25, 127, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .type-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(102, 25, 127, 0.1);
+    }
+
+    .type-icon {
+      width: 80px;
+      height: 80px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      color: white;
+      font-size: 1.8rem;
+    }
+
+    /* Pagination */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 50px;
+    }
+
+    .page-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--light);
+      color: var(--primary);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .page-btn.active, .page-btn:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* Newsletter */
+    .newsletter {
+      padding: 80px 0;
+      background: linear-gradient(135deg, var(--primary) 0%, #8e2de2 100%);
+      color: white;
+      text-align: center;
+    }
+
+    .newsletter h2 {
+      color: white;
+      margin-bottom: 30px;
+    }
+
+    .newsletter-form {
+      max-width: 500px;
+      margin: 0 auto;
+      display: flex;
+      gap: 10px;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      padding: 15px 20px;
+      border-radius: 50px;
+      border: none;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 60px 0 30px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-column h3 {
+      color: white;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--primary);
+    }
+
+    .footer-column ul {
+      list-style: none;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-column a {
+      color: #ccc;
+      transition: color 0.3s;
+    }
+
+    .footer-column a:hover {
+      color: white;
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 1.3rem;
+      margin-right: 15px;
+      transition: color 0.3s;
+    }
+
+    .social-links a:hover {
+      color: var(--primary);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero {
+        margin-top: 60px;
+        padding: 100px 20px 60px;
+      }
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      .hero p {
+        font-size: 1.1rem;
+      }
+      .nav-icons {
+        gap: 15px;
+      }
+      .nav-icons a {
+        font-size: 1rem;
+        width: 35px;
+        height: 35px;
+      }
+      .logo {
+        height: 40px;
+      }
+      .lang-switch select {
+        padding: 6px 10px;
+      }
+      .newsletter-form {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .navbar {
+        padding: 10px 3%;
+      }
+      .hero {
+        padding: 80px 15px 50px;
+      }
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .btn {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+      }
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <!-- Left: Social Icons -->
+    <div class="nav-icons">
+      <a href="#contact" title="Contact Us"><i class="fas fa-envelope"></i></a>
+      <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+    </div>
+
+    <!-- Center: Logo -->
+    <div class="logo-container">
+      <img src="../images/Logo.png" alt="Genuine Stage Logo" class="logo"/>
+      <div class="logo-name">Genuine Stage</div>
+    </div>
+
+    <!-- Right: Language Switcher & Hamburger Menu -->
+    <div style="display: flex; align-items: center;">
+      <div class="lang-switch">
+        <select onchange="changeLang(this.value)">
+          <option value="en">English</option>
+          <option value="am">አማርኛ</option>
+          <option value="om">Afaan Oromoo</option>
+          <option value="ti">ትግርኛ</option>
+          <option value="ar">العربية</option>
+        </select>
+      </div>
+      <div class="menu-toggle" id="menu-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Side Menu (Hamburger Menu) -->
+  <div class="side-menu" id="sideMenu">
+    <ul>
+      <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+      <li><a href="programs.html"><i class="fas fa-graduation-cap"></i> Programs</a></li>
+      <li><a href="resources.html"><i class="fas fa-book"></i> Resources</a></li>
+      <li><a href="testimonials.html"><i class="fas fa-quote-left"></i> Testimonials</a></li>
+      <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+      <li><a href="events.html"><i class="fas fa-calendar-alt"></i> Events</a></li>
+      <li><a href="community-forum.html"><i class="fas fa-comments"></i> Community Forum</a></li>
+      <li><a href="faqs.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
+    </ul>
+  </div>
+
+  <!-- Overlay to close menu when clicked outside -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>Self-Help Tools</h1>
+      <p>Practical resources for mental wellness and personal growth</p>
+      <a href="#tools" class="btn">Explore Tools</a>
+    </div>
+  </section>
+
+  <!-- Self-Help Tools Section -->
+  <section class="self-help-tools" id="tools">
+    <div class="container">
+      <h2 class="section-title">Tools for Your Mental Wellness Journey</h2>
+      <p class="section-subtitle">Evidence-based resources you can use anytime</p>
+      
+      <!-- Search Bar -->
+      <div class="search-bar">
+        <input type="text" placeholder="Search tools...">
+        <button><i class="fas fa-search"></i></button>
+      </div>
+      
+      <!-- Categories -->
+      <div class="categories">
+        <button class="category-btn active">All Tools</button>
+        <button class="category-btn">Anxiety</button>
+        <button class="category-btn">Depression</button>
+        <button class="category-btn">Mindfulness</button>
+        <button class="category-btn">Relationships</button>
+        <button class="category-btn">Stress</button>
+      </div>
+      
+      <!-- Tools Grid -->
+      <div class="tools-grid">
+        <!-- Mood Tracker -->
+        <article class="tool-card">
+          <img src="../images/mood tracker.jpg" alt="Mood Tracker" class="tool-img"/>
+          <div class="tool-content">
+            <span class="tool-category">Emotional Wellness</span>
+            <h3>Interactive Mood Tracker</h3>
+            <div class="tool-meta">
+              <div class="meta-item">
+                <i class="fas fa-file-pdf"></i>
+                <span>PDF Download</span>
+              </div>
+              <div class="meta-item">
+                <i class="far fa-clock"></i>
+                <span>Daily Use</span>
+              </div>
+            </div>
+            <p>Track your emotional patterns and identify triggers with this printable mood tracker. Includes guided instructions for reflection.</p>
+            
+            <!-- PDF Resource -->
+            <div class="media-container">
+              <div class="pdf-preview">
+                <div class="pdf-icon">
+                  <i class="fas fa-file-pdf"></i>
+                </div>
+                <div>
+                  <h4>Mood Tracker Workbook</h4>
+                  <p>Download our 30-day mood tracking system with reflection prompts</p>
+                  <a href="resources/mood-tracker.pdf" class="btn" download>Download PDF</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+        
+        <!-- Guided Meditation -->
+        <article class="tool-card">
+          <img src="../images/meditation.jpg" alt="Guided Meditation" class="tool-img"/>
+          <div class="tool-content">
+            <span class="tool-category">Mindfulness</span>
+            <h3>Guided Meditation Series</h3>
+            <div class="tool-meta">
+              <div class="meta-item">
+                <i class="fas fa-headphones"></i>
+                <span>Audio Guide</span>
+              </div>
+              <div class="meta-item">
+                <i class="far fa-clock"></i>
+                <span>5-20 min</span>
+              </div>
+            </div>
+            <p>A collection of guided meditations for stress relief, sleep, and emotional balance. Suitable for beginners and experienced practitioners.</p>
+            
+            <!-- Video Resource -->
+            <div class="media-container">
+              <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/meditation123" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            </div>
+            
+            <a href="#" class="btn-secondary">Access All Meditations</a>
+          </div>
+        </article>
+        
+        <!-- CBT Worksheets -->
+        <article class="tool-card">
+          <img src="../images/cbt worksheets.jpg" alt="CBT Worksheets" class="tool-img"/>
+          <div class="tool-content">
+            <span class="tool-category">Cognitive Behavioral</span>
+            <h3>CBT Thought Challenge Worksheets</h3>
+            <div class="tool-meta">
+              <div class="meta-item">
+                <i class="fas fa-file-pdf"></i>
+                <span>PDF Download</span>
+              </div>
+              <div class="meta-item">
+                <i class="far fa-clock"></i>
+                <span>Weekly Use</span>
+              </div>
+            </div>
+            <p>Practical worksheets to identify and reframe negative thought patterns using Cognitive Behavioral Therapy techniques.</p>
+            
+            <!-- PDF Resource -->
+            <div class="media-container">
+              <div class="pdf-preview">
+                <div class="pdf-icon">
+                  <i class="fas fa-file-pdf"></i>
+                </div>
+                <div>
+                  <h4>CBT Workbook</h4>
+                  <p>Complete set of 12 worksheets with instructions</p>
+                  <a href="resources/cbt-workbook.pdf" class="btn" download>Download PDF</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+        
+        <!-- Breathing Exercises -->
+        <article class="tool-card">
+          <img src="../images/breathing.jpg" alt="Breathing Exercises" class="tool-img"/>
+          <div class="tool-content">
+            <span class="tool-category">Stress Relief</span>
+            <h3>Breathing Exercise Guides</h3>
+            <div class="tool-meta">
+              <div class="meta-item">
+                <i class="fas fa-mobile-alt"></i>
+                <span>Interactive</span>
+              </div>
+              <div class="meta-item">
+                <i class="far fa-clock"></i>
+                <span>1-5 min</span>
+              </div>
+            </div>
+            <p>Visual guides for various breathing techniques to manage anxiety and stress in the moment. Includes animated demonstrations.</p>
+            
+            <!-- Image Gallery -->
+            <div class="media-container">
+              <div class="image-gallery">
+                <img src="../images/Box Breathing.jpg" alt="Box Breathing" class="gallery-image">
+                <img src="../images/4 7 8 Technique.jpg" alt="4-7-8 Technique" class="gallery-image">
+                <img src="../images/Diaphragmatic Breathing.jpg" alt="Diaphragmatic Breathing" class="gallery-image">
+              </div>
+            </div>
+            
+            <a href="#" class="btn-secondary">View All Techniques</a>
+          </div>
+        </article>
+        
+        <!-- Gratitude Journal -->
+        <article class="tool-card">
+          <img src="../images/gratitude.jpg" alt="Gratitude Journal" class="tool-img"/>
+          <div class="tool-content">
+            <span class="tool-category">Positive Psychology</span>
+            <h3>Gratitude Journal Template</h3>
+            <div class="tool-meta">
+              <div class="meta-item">
+                <i class="fas fa-file-pdf"></i>
+                <span>Printable</span>
+              </div>
+              <div class="meta-item">
+                <i class="far fa-clock"></i>
+                <span>Daily Practice</span>
+              </div>
+            </div>
+            <p>A guided gratitude journal with daily prompts to cultivate positivity and appreciation in your life.</p>
+            
+            <!-- PDF Resource -->
+            <div class="media-container">
+              <div class="pdf-preview">
+                <div class="pdf-icon">
+                  <i class="fas fa-file-pdf"></i>
+                </div>
+                <div>
+                  <h4>30-Day Gratitude Journal</h4>
+                  <p>Printable journal with daily prompts and reflection space</p>
+                  <a href="resources/gratitude-journal.pdf" class="btn" download>Download PDF</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+        
+        <!-- Communication Guide -->
+        <article class="tool-card">
+          <img src="../images/Communication Workbook.jpg" alt="Communication Guide" class="tool-img"/>
+          <div class="tool-content">
+            <span class="tool-category">Relationships</span>
+            <h3>Healthy Communication Workbook</h3>
+            <div class="tool-meta">
+              <div class="meta-item">
+                <i class="fas fa-file-pdf"></i>
+                <span>PDF Download</span>
+              </div>
+              <div class="meta-item">
+                <i class="far fa-clock"></i>
+                <span>Weekly Exercises</span>
+              </div>
+            </div>
+            <p>Exercises and worksheets to improve communication skills in personal and professional relationships.</p>
+            
+            <!-- PDF Resource -->
+            <div class="media-container">
+              <div class="pdf-preview">
+                <div class="pdf-icon">
+                  <i class="fas fa-file-pdf"></i>
+                </div>
+                <div>
+                  <h4>Communication Skills Guide</h4>
+                  <p>8-week program with practical exercises</p>
+                  <a href="resources/communication-guide.pdf" class="btn" download>Download PDF</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+      
+      <!-- Pagination -->
+      <div class="pagination">
+        <div class="page-btn"><i class="fas fa-chevron-left"></i></div>
+        <div class="page-btn active">1</div>
+        <div class="page-btn">2</div>
+        <div class="page-btn">3</div>
+        <div class="page-btn"><i class="fas fa-chevron-right"></i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tool Types Section -->
+  <section class="tool-types">
+    <div class="container">
+      <h2 class="section-title">Types of Self-Help Tools</h2>
+      <p class="section-subtitle">Explore different formats to support your mental health</p>
+      
+      <div class="types-grid">
+        <div class="type-card">
+          <div class="type-icon">
+            <i class="fas fa-file-pdf"></i>
+          </div>
+          <h3>Printable Worksheets</h3>
+          <p>Downloadable PDFs with exercises, trackers, and guided activities for personal reflection and growth.</p>
+          <a href="#" class="btn">View Worksheets</a>
+        </div>
+        
+        <div class="type-card">
+          <div class="type-icon">
+            <i class="fas fa-headphones"></i>
+          </div>
+          <h3>Audio Guides</h3>
+          <p>Guided meditations, relaxation exercises, and therapeutic audio content for various mental health needs.</p>
+          <a href="#" class="btn">Listen Now</a>
+        </div>
+        
+        <div class="type-card">
+          <div class="type-icon">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <h3>Interactive Tools</h3>
+          <p>Digital assessments, mood trackers, and other interactive resources for self-reflection and monitoring.</p>
+          <a href="#" class="btn">Explore Tools</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="newsletter">
+    <div class="container">
+      <h2>Get New Tools Delivered to Your Inbox</h2>
+      <p>Subscribe to receive our latest self-help resources and mental wellness tips</p>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Your email address" required>
+        <button type="submit" class="btn">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>About Genuine Stage</h3>
+          <p>Empowering individuals and communities through compassionate mental health support and personal development.</p>
+        </div>
+        <div class="footer-column">
+          <h3>Services</h3>
+          <ul>
+            <li><a href="individual-therapy.html">Individual Therapy</a></li>
+            <li><a href="group-programs.html">Group Programs</a></li>
+            <li><a href="workshops.html">Workshops</a></li>
+            <li><a href="online-sessions.html">Online Sessions</a></li>
+            <li><a href="crisis-support.html">Crisis Support</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="self-help-tools.html">Self-Help Tools</a></li>
+            <li><a href="mental-health-tips.html">Mental Health Tips</a></li>
+            <li><a href="community-forum.html">Community Forum</a></li>
+            <li><a href="faqs.html">FAQs</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Contact Us</h3>
+          <ul>
+            <li><i class="fas fa-map-marker-alt"></i> Addis Ababa, Ethiopia</li>
+            <li><i class="fas fa-phone"></i> +251 911 234 567</li>
+            <li><i class="fas fa-envelope"></i> info@genuinestage.com</li>
+          </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Newsletter</h3>
+        <p>Stay updated with mental health tips and program announcements.</p>
+        <form>
+          <input type="email" placeholder="Your email" required>
+          <button type="submit" class="btn">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="social-links">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-telegram"></i></a>
+    </div>
+    <div class="copyright">
+      © 2025 Genuine Stage. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+  <!-- JavaScript -->
+  <script>
+    const menuIcon = document.getElementById('menu-icon');
+    const sideMenu = document.getElementById('sideMenu');
+    const overlay = document.getElementById('overlay');
+
+    // Open/close menu
+    menuIcon.addEventListener('click', () => {
+      menuIcon.classList.toggle('active');
+      sideMenu.classList.toggle('active');
+      overlay.classList.toggle('active');
+    });
+
+    // Close menu when clicking overlay
+    overlay.addEventListener('click', () => {
+      menuIcon.classList.remove('active');
+      sideMenu.classList.remove('active');
+      overlay.classList.remove('active');
+    });
+
+    // Language Switcher
+    function changeLang(lang) {
+      alert("Language changed to: " + lang + "\nFull translation will be added in the full version.");
+      // In future: load JSON or use backend to switch content
+    }
+
+    // Category Filter
+    const categoryBtns = document.querySelectorAll('.category-btn');
+    categoryBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        categoryBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        // Filter functionality would be added here
+      });
+    });
+
+    // Image Gallery Lightbox (would be implemented fully in production)
+    const galleryImages = document.querySelectorAll('.gallery-image');
+    galleryImages.forEach(img => {
+      img.addEventListener('click', () => {
+        // This would open a lightbox in production
+        console.log("Opening image in lightbox:", img.src);
+      });
+    });
+
+    // PDF Download Tracking
+    const pdfLinks = document.querySelectorAll('a[download]');
+    pdfLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        console.log("Downloaded:", link.href);
+        // In production: Add analytics tracking here
+      });
+    });
+  </script>
+
+</body>
+</html>

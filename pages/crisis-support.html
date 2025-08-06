@@ -1,0 +1,1122 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Crisis Support at Genuine Stage - Immediate help for mental health emergencies in Ethiopia."/>
+  <title>Crisis Support | Genuine Stage - Emergency Mental Health Services</title>
+
+  <!-- Favicon (optional) -->
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon"/>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans&display=swap" rel="stylesheet"/>
+
+  <!-- Custom CSS -->
+  <style>
+    :root {
+      --primary: #66197F;
+      --primary-light: #8a4b9e;
+      --light: #f9f7fc;
+      --dark: #1e0a3c;
+      --gray: #555;
+      --light-gray: #f0f0f0;
+      --white: #ffffff;
+      --urgent: #e74c3c;
+      --urgent-light: #ff6b6b;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      line-height: 1.7;
+      color: #333;
+      background-color: var(--light);
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: 'Poppins', sans-serif;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--white);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Navbar Styles - Purple Version */
+    .navbar {
+      background-color: var(--primary);
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+    }
+    
+    /* Contact & Social Icons Section */
+    .nav-icons {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+    
+    .nav-icons a {
+      color: var(--white);
+      font-size: 1.2rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      background: rgba(255,255,255,0.2);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .nav-icons a:hover {
+      color: var(--primary);
+      background: var(--white);
+      transform: translateY(-3px);
+    }
+    
+    /* Logo Container */
+    .logo-container {
+      width: 160px;
+      height: auto;
+      transition: all 0.3s ease;
+    }
+    
+    .logo {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      display: block;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .logo:hover {
+      transform: scale(1.05);
+    }
+    
+    .logo-name {
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: bold;
+      margin-top: 5px;
+      text-align: center;
+    }
+    
+    /* Hamburger Icon */
+    .menu-toggle {
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 10px;
+      z-index: 1001;
+    }
+    
+    .menu-toggle span {
+      width: 30px;
+      height: 3px;
+      background-color: var(--white);
+      transition: all 0.3s ease;
+    }
+    
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+    
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+    
+    /* Slide-out Menu */
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -300px;
+      width: 300px;
+      height: 100%;
+      background-color: var(--primary);
+      padding-top: 80px;
+      transition: left 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      z-index: 1000;
+      overflow-y: auto;
+      box-shadow: 5px 0 15px rgba(0,0,0,0.2);
+    }
+    
+    .side-menu.active {
+      left: 0;
+    }
+    
+    .side-menu ul {
+      list-style: none;
+      padding: 0 20px;
+    }
+    
+    .side-menu li a {
+      display: block;
+      padding: 15px 20px;
+      text-decoration: none;
+      color: var(--white);
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border-radius: 8px;
+      margin-bottom: 5px;
+    }
+    
+    .side-menu li a:hover {
+      background-color: var(--white);
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+    
+    /* Overlay to close menu when clicked outside */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      backdrop-filter: blur(5px);
+      display: none;
+      z-index: 999;
+      transition: all 0.3s ease;
+    }
+    
+    .overlay.active {
+      display: block;
+    }
+
+    /* Language Switcher */
+    .lang-switch {
+      margin-left: 20px;
+    }
+
+    .lang-switch select {
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 8px 12px;
+      border-radius: 5px;
+      background: var(--primary-light);
+      font-size: 14px;
+      color: var(--white);
+    }
+
+    .lang-switch select option {
+      background: var(--white);
+      color: var(--dark);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(102, 25, 127, 0.8), rgba(102, 25, 127, 0.8)), url('images/crisis-support-hero.jpg') no-repeat center center;
+      background-size: cover;
+      color: white;
+      text-align: center;
+      padding: 140px 20px 80px;
+      margin-top: 80px;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 800px;
+      margin: 0 auto 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: var(--white);
+      color: var(--primary);
+      padding: 14px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      background-color: var(--light);
+    }
+
+    .btn-urgent {
+      background-color: var(--urgent);
+      color: white;
+      animation: pulse 2s infinite;
+    }
+
+    .btn-urgent:hover {
+      background-color: var(--urgent-light);
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.7);
+      }
+      70% {
+        box-shadow: 0 0 0 10px rgba(231, 76, 60, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(231, 76, 60, 0);
+      }
+    }
+
+    /* Crisis Support Section */
+    .crisis-support {
+      padding: 80px 0;
+      background-color: white;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.2rem;
+      margin-bottom: 50px;
+      color: var(--gray);
+    }
+
+    .support-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .support-text {
+      padding: 20px;
+    }
+
+    .support-text h3 {
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+
+    .support-text p {
+      margin-bottom: 15px;
+    }
+
+    .support-img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    /* Emergency Contacts Section */
+    .emergency-contacts {
+      padding: 80px 0;
+      background: var(--light);
+    }
+
+    .contacts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .contact-card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      text-align: center;
+      border: 1px solid rgba(102, 25, 127, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(102, 25, 127, 0.1);
+    }
+
+    .contact-icon {
+      width: 80px;
+      height: 80px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      color: white;
+      font-size: 1.8rem;
+    }
+
+    .urgent-icon {
+      background: var(--urgent);
+    }
+
+    .contact-number {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--urgent);
+      margin: 15px 0;
+    }
+
+    /* Support Services Section */
+    .support-services {
+      padding: 80px 0;
+      background: white;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .service-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border: 1px solid rgba(102, 25, 127, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(102, 25, 127, 0.1);
+    }
+
+    .service-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .service-content {
+      padding: 25px;
+    }
+
+    .service-content h3 {
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+    }
+
+    .service-meta {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 15px;
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* Warning Signs Section */
+    .warning-signs {
+      padding: 80px 0;
+      background: var(--light);
+    }
+
+    .signs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .sign-card {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border-left: 5px solid var(--urgent);
+    }
+
+    .sign-card h4 {
+      color: var(--urgent);
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Testimonials Section */
+    .testimonials {
+      padding: 80px 0;
+      background: white;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .testimonial {
+      background: var(--light);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border-left: 5px solid var(--primary);
+    }
+
+    .testimonial p {
+      font-style: italic;
+      margin-bottom: 15px;
+    }
+
+    .client {
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    /* FAQ Section */
+    .faq {
+      padding: 80px 0;
+      background: var(--light);
+    }
+
+    .faq-item {
+      margin-bottom: 20px;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      border: 1px solid rgba(102, 25, 127, 0.1);
+    }
+
+    .faq-question {
+      padding: 20px;
+      background: var(--primary);
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-answer {
+      padding: 20px;
+      display: none;
+    }
+
+    .faq-answer.active {
+      display: block;
+    }
+
+    /* CTA Section */
+    .cta {
+      padding: 80px 0;
+      background: linear-gradient(135deg, var(--primary) 0%, #8e2de2 100%);
+      color: white;
+      text-align: center;
+    }
+
+    .cta h2 {
+      color: white;
+      margin-bottom: 30px;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 60px 0 30px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-column h3 {
+      color: white;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--primary);
+    }
+
+    .footer-column ul {
+      list-style: none;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-column a {
+      color: #ccc;
+      transition: color 0.3s;
+    }
+
+    .footer-column a:hover {
+      color: white;
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 1.3rem;
+      margin-right: 15px;
+      transition: color 0.3s;
+    }
+
+    .social-links a:hover {
+      color: var(--primary);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero {
+        margin-top: 60px;
+        padding: 100px 20px 60px;
+      }
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      .hero p {
+        font-size: 1.1rem;
+      }
+      .nav-icons {
+        gap: 15px;
+      }
+      .nav-icons a {
+        font-size: 1rem;
+        width: 35px;
+        height: 35px;
+      }
+      .logo {
+        height: 40px;
+      }
+      .lang-switch select {
+        padding: 6px 10px;
+      }
+      .support-content {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .navbar {
+        padding: 10px 3%;
+      }
+      .hero {
+        padding: 80px 15px 50px;
+      }
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .btn {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <!-- Left: Social Icons -->
+    <div class="nav-icons">
+      <a href="#contact" title="Contact Us"><i class="fas fa-envelope"></i></a>
+      <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+    </div>
+
+    <!-- Center: Logo -->
+    <div class="logo-container">
+      <img src="../images/Logo.png" alt="Genuine Stage Logo" class="logo"/>
+      <div class="logo-name">Genuine Stage</div>
+    </div>
+
+    <!-- Right: Language Switcher & Hamburger Menu -->
+    <div style="display: flex; align-items: center;">
+      <div class="lang-switch">
+        <select onchange="changeLang(this.value)">
+          <option value="en">English</option>
+          <option value="am">አማርኛ</option>
+          <option value="om">Afaan Oromoo</option>
+          <option value="ti">ትግርኛ</option>
+          <option value="ar">العربية</option>
+        </select>
+      </div>
+      <div class="menu-toggle" id="menu-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Side Menu (Hamburger Menu) -->
+  <div class="side-menu" id="sideMenu">
+    <ul>
+      <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+      <li><a href="programs.html"><i class="fas fa-graduation-cap"></i> Programs</a></li>
+      <li><a href="resources.html"><i class="fas fa-book"></i> Resources</a></li>
+      <li><a href="testimonials.html"><i class="fas fa-quote-left"></i> Testimonials</a></li>
+      <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+      <li><a href="events.html"><i class="fas fa-calendar-alt"></i> Events</a></li>
+      <li><a href="community-forum.html"><i class="fas fa-comments"></i> Community Forum</a></li>
+      <li><a href="faqs.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
+    </ul>
+  </div>
+
+  <!-- Overlay to close menu when clicked outside -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>Crisis Support</h1>
+      <p>Immediate help for mental health emergencies and emotional distress</p>
+      <a href="#emergency-contacts" class="btn btn-urgent">Emergency Contacts</a>
+    </div>
+  </section>
+
+  <!-- Crisis Support Section -->
+  <section class="crisis-support">
+    <div class="container">
+      <h2 class="section-title">Immediate Help When You Need It Most</h2>
+      <p class="section-subtitle">24/7 support for mental health emergencies</p>
+      
+      <div class="support-content">
+        <div class="support-text">
+          <h3>What Is Crisis Support?</h3>
+          <p>Our crisis support services provide immediate assistance for individuals experiencing mental health emergencies, emotional distress, or suicidal thoughts. We offer a safe, confidential space to talk with trained professionals who can help you through difficult moments.</p>
+          <p>Crisis situations may include suicidal thoughts, self-harm urges, severe anxiety or panic attacks, traumatic experiences, or overwhelming emotional pain. You don't have to face these challenges alone - our team is here to listen, support, and guide you toward appropriate care.</p>
+          <p>All crisis support is provided by mental health professionals trained in crisis intervention. We prioritize your safety and wellbeing, offering both immediate support and connections to ongoing care when needed.</p>
+          <a href="#emergency-contacts" class="btn">View Emergency Contacts</a>
+        </div>
+        <div>
+          <img src="../images/crisis support1.jpg" alt="Crisis support professional on phone" class="support-img"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Emergency Contacts Section -->
+  <section class="emergency-contacts" id="emergency-contacts">
+    <div class="container">
+      <h2 class="section-title">Emergency Contacts</h2>
+      <p class="section-subtitle">Immediate help available 24/7</p>
+      
+      <div class="contacts-grid">
+        <div class="contact-card">
+          <div class="contact-icon urgent-icon">
+            <i class="fas fa-phone-alt"></i>
+          </div>
+          <h3>Genuine Stage Crisis Line</h3>
+          <p>Our dedicated mental health crisis hotline staffed by trained professionals</p>
+          <div class="contact-number">0911 234 567</div>
+          <p>Available 24/7 in multiple languages</p>
+        </div>
+        
+        <div class="contact-card">
+          <div class="contact-icon urgent-icon">
+            <i class="fas fa-headset"></i>
+          </div>
+          <h3>National Suicide Prevention</h3>
+          <p>Ethiopia's national suicide prevention and mental health support line</p>
+          <div class="contact-number">0922 345 678</div>
+          <p>Available 24/7 in Amharic and English</p>
+        </div>
+        
+        <div class="contact-card">
+          <div class="contact-icon">
+            <i class="fas fa-ambulance"></i>
+          </div>
+          <h3>Emergency Medical Services</h3>
+          <p>For immediate medical emergencies or if someone is in immediate danger</p>
+          <div class="contact-number">911</div>
+          <p>Available throughout Ethiopia</p>
+        </div>
+        
+        <div class="contact-card">
+          <div class="contact-icon">
+            <i class="fas fa-hospital"></i>
+          </div>
+          <h3>Psychiatric Emergency</h3>
+          <p>Emergency psychiatric services at major hospitals</p>
+          <div class="contact-number">0933 456 789</div>
+          <p>Available 24/7 at participating hospitals</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Support Services Section -->
+  <section class="support-services">
+    <div class="container">
+      <h2 class="section-title">Crisis Support Services</h2>
+      <p class="section-subtitle">Specialized help for mental health emergencies</p>
+      
+      <div class="services-grid">
+        <div class="service-card">
+          <img src="../images/crisis-hotline.jpg" alt="Crisis hotline" class="service-img"/>
+          <div class="service-content">
+            <h3>24/7 Crisis Hotline</h3>
+            <div class="service-meta">
+              <div class="meta-item">
+                <i class="fas fa-clock"></i>
+                <span>Available 24/7</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-phone"></i>
+                <span>Phone & Chat</span>
+              </div>
+            </div>
+            <p>Immediate support from trained crisis counselors via phone or online chat. Confidential and free of charge.</p>
+            <button class="btn">Call Now</button>
+          </div>
+        </div>
+        
+        <div class="service-card">
+          <img src="../images/mobile-crisis.jpg" alt="Mobile crisis team" class="service-img"/>
+          <div class="service-content">
+            <h3>Mobile Crisis Team</h3>
+            <div class="service-meta">
+              <div class="meta-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Addis Ababa</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-clock"></i>
+                <span>8 AM - 10 PM</span>
+              </div>
+            </div>
+            <p>In-person crisis response team that can come to your location in the Addis Ababa area for face-to-face support.</p>
+            <button class="btn">Request Assistance</button>
+          </div>
+        </div>
+        
+        <div class="service-card">
+          <img src="../images/crisis-chat.jpg" alt="Online crisis chat" class="service-img"/>
+          <div class="service-content">
+            <h3>Text & Online Chat</h3>
+            <div class="service-meta">
+              <div class="meta-item">
+                <i class="fas fa-comments"></i>
+                <span>Text Support</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-clock"></i>
+                <span>24/7 Availability</span>
+              </div>
+            </div>
+            <p>Prefer to text? Our secure messaging service connects you with crisis counselors for immediate text-based support.</p>
+            <button class="btn">Start Chat</button>
+          </div>
+        </div>
+        
+        <div class="service-card">
+          <img src="../images/follow-up-care.jpg" alt="Follow-up care" class="service-img"/>
+          <div class="service-content">
+            <h3>Follow-Up Care</h3>
+            <div class="service-meta">
+              <div class="meta-item">
+                <i class="fas fa-calendar-check"></i>
+                <span>Ongoing Support</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-user-md"></i>
+                <span>Therapist Matching</span>
+              </div>
+            </div>
+            <p>After crisis stabilization, we help connect you with ongoing mental health services and support groups.</p>
+            <button class="btn">Learn More</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Warning Signs Section -->
+  <section class="warning-signs">
+    <div class="container">
+      <h2 class="section-title">Recognizing Crisis Warning Signs</h2>
+      <p class="section-subtitle">When to seek immediate help for yourself or others</p>
+      
+      <div class="signs-grid">
+        <div class="sign-card">
+          <h4><i class="fas fa-exclamation-triangle"></i> Suicidal Thoughts</h4>
+          <p>Expressing thoughts of suicide, death, or wanting to die, or making plans for suicide.</p>
+        </div>
+        
+        <div class="sign-card">
+          <h4><i class="fas fa-exclamation-triangle"></i> Self-Harm</h4>
+          <p>Engaging in self-injury behaviors like cutting, burning, or other forms of self-harm.</p>
+        </div>
+        
+        <div class="sign-card">
+          <h4><i class="fas fa-exclamation-triangle"></i> Severe Depression</h4>
+          <p>Overwhelming sadness, hopelessness, or withdrawal lasting more than two weeks.</p>
+        </div>
+        
+        <div class="sign-card">
+          <h4><i class="fas fa-exclamation-triangle"></i> Psychotic Symptoms</h4>
+          <p>Experiencing hallucinations, delusions, or losing touch with reality.</p>
+        </div>
+        
+        <div class="sign-card">
+          <h4><i class="fas fa-exclamation-triangle"></i> Extreme Anxiety</h4>
+          <p>Panic attacks, uncontrollable fear, or anxiety that interferes with daily functioning.</p>
+        </div>
+        
+        <div class="sign-card">
+          <h4><i class="fas fa-exclamation-triangle"></i> Substance Abuse</h4>
+          <p>Dangerous drug or alcohol use that may lead to overdose or risky behaviors.</p>
+        </div>
+        
+        <div class="sign-card">
+          <h4><i class="fas fa-exclamation-triangle"></i> Trauma Reactions</h4>
+          <p>Severe distress after experiencing or witnessing a traumatic event.</p>
+        </div>
+        
+        <div class="sign-card">
+          <h4><i class="fas fa-exclamation-triangle"></i> Violent Behavior</h4>
+          <p>Threats or acts of violence toward oneself or others.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials">
+    <div class="container">
+      <h2 class="section-title">Stories of Hope</h2>
+      <p class="section-subtitle">How crisis support made a difference</p>
+      
+      <div class="testimonial-grid">
+        <div class="testimonial">
+          <p>"When I called the crisis line at my lowest point, the counselor listened without judgment and helped me see options I couldn't see myself. That call saved my life."</p>
+          <div class="client">Elias M.</div>
+          <div class="client-role">Crisis Line Caller</div>
+        </div>
+        
+        <div class="testimonial">
+          <p>"The mobile crisis team came when my son was in crisis and helped de-escalate the situation safely. They connected us with resources we didn't know existed."</p>
+          <div class="client">Amina K.</div>
+          <div class="client-role">Parent</div>
+        </div>
+        
+        <div class="testimonial">
+          <p>"Texting the crisis service was easier for me than talking. The counselor understood my anxiety and helped me through a panic attack at 3 AM when I felt completely alone."</p>
+          <div class="client">Dawit T.</div>
+          <div class="client-role">Text Support User</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq">
+    <div class="container">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <p class="section-subtitle">Common questions about crisis support</p>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>When should I call a crisis line versus going to the emergency room?</span>
+          <i class="fas fa-plus"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Call a crisis line if you're experiencing emotional distress, suicidal thoughts, or need someone to talk to. Go to the emergency room or call emergency services if there's immediate danger to life (active suicide attempt, medical emergency, or violence occurring). Crisis counselors can help you determine the appropriate level of care if you're unsure.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Will calling a crisis line get me hospitalized?</span>
+          <i class="fas fa-plus"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Hospitalization is only considered when there's imminent risk to life that can't be managed safely otherwise. Our goal is to help you stay safe in the least restrictive environment possible. Crisis counselors will work with you to create a safety plan and explore all options before considering hospitalization.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>What if I don't feel comfortable talking on the phone?</span>
+          <i class="fas fa-plus"></i>
+        </div>
+        <div class="faq-answer">
+          <p>We offer text-based crisis support through our online chat service. This allows you to communicate with a crisis counselor via text if that feels more comfortable. Many people find texting easier when they're in distress or have difficulty speaking about their feelings.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Are crisis services available in different languages?</span>
+          <i class="fas fa-plus"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Yes! Our crisis services are available in Amharic, Afaan Oromoo, Tigrinya, Arabic, and English. When you call or text, you can request support in your preferred language, and we'll connect you with a counselor who speaks that language or use translation services if needed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta">
+    <div class="container">
+      <h2>You're Not Alone</h2>
+      <p>Help is available right now for whatever you're going through</p>
+      <a href="tel:0911234567" class="btn btn-urgent">Call Crisis Line Now</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>About Genuine Stage</h3>
+          <p>Empowering individuals and communities through compassionate mental health support and personal development.</p>
+        </div>
+        <div class="footer-column">
+          <h3>Services</h3>
+          <ul>
+            <li><a href="individual-therapy.html">Individual Therapy</a></li>
+            <li><a href="group-programs.html">Group Programs</a></li>
+            <li><a href="workshops.html">Workshops</a></li>
+            <li><a href="online-sessions.html">Online Sessions</a></li>
+            <li><a href="crisis-support.html">Crisis Support</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="self-help-tools.html">Self-Help Tools</a></li>
+            <li><a href="mental-health-tips.html">Mental Health Tips</a></li>
+            <li><a href="community-forum.html">Community Forum</a></li>
+            <li><a href="faqs.html">FAQs</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Newsletter</h3>
+          <p>Stay updated with mental health tips and service announcements.</p>
+          <form>
+            <input type="email" placeholder="Your email" required>
+            <button type="submit" class="btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-telegram"></i></a>
+      </div>
+      <div class="copyright">
+        © 2025 Genuine Stage. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript for Toggle -->
+  <script>
+    const menuIcon = document.getElementById('menu-icon');
+    const sideMenu = document.getElementById('sideMenu');
+    const overlay = document.getElementById('overlay');
+
+    // Open/close menu
+    menuIcon.addEventListener('click', () => {
+      menuIcon.classList.toggle('active');
+      sideMenu.classList.toggle('active');
+      overlay.classList.toggle('active');
+    });
+
+    // Close menu when clicking overlay
+    overlay.addEventListener('click', () => {
+      menuIcon.classList.remove('active');
+      sideMenu.classList.remove('active');
+      overlay.classList.remove('active');
+    });
+
+    // Language Switcher
+    function changeLang(lang) {
+      alert("Language changed to: " + lang + "\nFull translation will be added in the full version.");
+      // In future: load JSON or use backend to switch content
+    }
+
+    // FAQ Accordion
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+      question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        const icon = question.querySelector('i');
+        
+        answer.classList.toggle('active');
+        icon.classList.toggle('fa-plus');
+        icon.classList.toggle('fa-minus');
+      });
+    });
+  </script>
+
+</body>
+</html>
